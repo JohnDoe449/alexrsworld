@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Alexr Games</title>
+<title>Alexr's World</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
-    /* --- PS4 SYSTEM FONTS & VARS --- */
+    
     :root {
         --ps-blue: #00439c;
-        --ps-light-blue: #00a0e9; /* Default accent color */
+        --ps-light-blue: #00a0e9; 
         --text-white: #e3f2fd;
         --card-size: 130px;
         --card-selected: 180px;
@@ -35,13 +35,13 @@
         background-repeat: no-repeat;
     }
 
-    /* Theme variants (backgrounds and accent tweaks) */
+    
     body.theme-default {
         background-color: #003791;
         background-image: 
             radial-gradient(circle at 50% 0%, rgba(255,255,255,0.1) 0%, transparent 60%),
             linear-gradient(110deg, #003791 0%, #005c9e 50%, #003791 100%);
-        --ps-light-blue: #00a0e9; /* Ensure default is set */
+        --ps-light-blue: #00a0e9; 
     }
 
     body.theme-dark {
@@ -52,14 +52,14 @@
         --ps-light-blue: #999999;
     }
 
-    /* MODIFIED: Red theme background update */
+    
     body.theme-red {
         background-color: #3a0000 !important;
         background-image:
             radial-gradient(circle at 20% 0, rgba(255,80,80,0.25) 0%, transparent 55%),
             radial-gradient(circle at 80% 100%, rgba(180,0,0,0.35) 0%, transparent 55%),
             linear-gradient(135deg, #3a0000, #7a0000) !important;
-        --ps-light-blue: #ff4d4d !important; /* Use red accent color */
+        --ps-light-blue: #ff4d4d !important; 
     }
     body.theme-red .card {
         background: rgba(60,0,0,0.6) !important;
@@ -68,33 +68,32 @@
         box-shadow: 0 0 0 4px #ff4d4d, 0 10px 20px rgba(0,0,0,0.8) !important;
     }
 
-
     body.theme-blue-dark {
         background-color: #020b1a;
         background-image: linear-gradient(135deg,#020b1a,#012b45);
         --ps-light-blue: #44aaff;
     }
     
-    /* MODIFIED: Define theme accent variable for use in library/slider */
+    
     body.theme-hacker {
         background-color: #000000;
         background-image: radial-gradient(circle at 20% 0, rgba(0,255,0,0.25) 0%, transparent 55%),
                           radial-gradient(circle at 80% 100%, rgba(0,255,0,0.25) 0%, transparent 55%);
         color: #00ff88;
-        --ps-light-blue: #00ff88; /* ACCENT COLOR FOR CATEGORY BUTTONS/SLIDER */
+        --ps-light-blue: #00ff88; 
     }
     
-    /* MODIFIED: Define theme accent variable for use in library/slider */
+    
     body.theme-tokyo {
         background-color: #050016;
         background-image: radial-gradient(circle at 10% 0, rgba(255,0,128,0.35) 0%, transparent 55%),
                           radial-gradient(circle at 90% 100%, rgba(0,255,255,0.35) 0%, transparent 55%),
                           linear-gradient(135deg,#050016,#001133);
-        color: #e3f2fd; /* Text color remains light */
-        --ps-light-blue: #ff4aff; /* ACCENT COLOR FOR CATEGORY BUTTONS/SLIDER */
+        color: #e3f2fd; 
+        --ps-light-blue: #ff4aff; 
     }
 
-    /* Custom uploaded background (covers themes if present) */
+    
     body.has-custom-bg {
         background-size: cover;
         background-position: center center;
@@ -102,7 +101,7 @@
         animation: none;
     }
 
-    /* PS5-style game background */
+    
     .game-bg-overlay {
         position: fixed;
         top: 0;
@@ -130,7 +129,7 @@
         100% { background-position: 0% 50%; }
     }
 
-    /* --- TOP NAVIGATION BAR --- */
+    
     .top-bar {
         display: flex;
         justify-content: space-between;
@@ -139,12 +138,12 @@
         font-size: 1.5rem;
         opacity: 0.9;
         text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-        position: relative; /* MODIFIED: For absolute positioning of hint */
+        position: relative; 
     }
     
-    /* NEW: Container for title and hint - Removed stacking for cleaner look */
+    
     .site-title-group {
-        /* This is now just a wrapper for the title, no flex-direction: column needed */
+        
     }
 
     .site-title {
@@ -160,20 +159,20 @@
         margin-right: 10px; 
     }
     
-    /* MODIFIED: Navigation Hint Styling - Centered */
+    
     .nav-hint {
-        position: absolute; /* MODIFIED */
-        left: 50%; /* MODIFIED */
-        top: 50%; /* MODIFIED: Center vertically */
-        transform: translate(-50%, -50%); /* MODIFIED: Center horizontally and vertically */
-        z-index: 5; /* Ensure it's above other things */
+        position: absolute; 
+        left: 50%; 
+        top: 50%; 
+        transform: translate(-50%, -50%); 
+        z-index: 5; 
         
         font-size: 0.85rem;
         font-weight: 300;
         color: rgba(255, 255, 255, 0.7);
-        /* Removed margin-top/padding-left */
+        
         text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-        white-space: nowrap; /* Ensures it stays on one line for responsiveness */
+        white-space: nowrap; 
     }
 
     .clock-area {
@@ -184,26 +183,25 @@
         gap: 20px;
     }
     
-    /* Social Media Icons */
+    
     .social-icons a {
-        color: inherit; /* Inherit color from body (e.g., #00ff88 for hacker) */
+        color: inherit; 
         transition: color 0.2s;
     }
     .social-icons a:hover {
-        color: var(--ps-light-blue); /* Use accent color on hover */
+        color: var(--ps-light-blue); 
     }
     .social-icons {
         display: flex;
         gap: 15px;
         font-size: 1.4rem;
-        color: white; /* Default color */
+        color: white; 
     }
     body.theme-hacker .social-icons { color: #00ff88; }
     body.theme-tokyo .social-icons { color: #ff4aff; }
-    body.theme-red .social-icons { color: var(--ps-light-blue); } /* Apply theme color */
+    body.theme-red .social-icons { color: var(--ps-light-blue); } 
 
-
-    /* --- MAIN CAROUSEL AREA --- */
+    
     .main-stage {
         margin-top: 40px;
         width: 100%;
@@ -249,7 +247,7 @@
         transition: opacity 0.2s;
     }
 
-    /* System Cards (Settings, Favorites, Library) */
+    
     .card.system-card {
         background: linear-gradient(135deg, #0b407a, #001f4d);
         display: flex;
@@ -274,12 +272,11 @@
     body.theme-hacker .card.system-card i,
     body.theme-tokyo .card.system-card i,
     body.theme-red .card.system-card i { 
-        color: inherit; /* Use themed color */
+        color: inherit; 
         opacity: 1;
     }
 
-
-    /* --- SELECTED STATE --- */
+    
     .card.active {
         width: var(--card-selected);
         height: var(--card-selected);
@@ -298,18 +295,18 @@
 
     .card.active img { opacity: 1; }
 
-    /* NEW: Drag and Drop visual feedback */
+    
     .card.dragging {
         opacity: 0.5;
         transform: translateY(10px) scale(0.9);
     }
     .card.drag-over {
-        /* Use active box-shadow as drop indicator */
+        
         box-shadow: 0 0 0 4px var(--ps-light-blue), 0 10px 20px rgba(0,0,0,0.8) !important;
-        transform: translateY(10px) scale(1.1); /* Slightly larger hover effect */
+        transform: translateY(10px) scale(1.1); 
     }
 
-    /* --- INFO AREA (Below Carousel) --- */
+    
     .info-area {
         margin-top: 80px;
         padding-left: 60px;
@@ -323,7 +320,7 @@
         transform: translateY(0);
     }
     
-    /* NEW: Hide sub-content when system tile is selected */
+    
     .sub-content.hidden {
         display: none !important;
     }
@@ -345,7 +342,7 @@
         letter-spacing: 1px;
     }
 
-    /* --- SUB CONTENT ROW --- */
+    
     .sub-content {
         display: flex;
         gap: 20px;
@@ -375,7 +372,7 @@
         cursor: pointer;
     }
 
-    /* --- LIBRARY & SETTINGS OVERLAY (Grid / Tabs View) --- */
+    
     .library-overlay {
         position: fixed;
         inset: 0;
@@ -417,7 +414,7 @@
     }
     .close-btn:hover { background: white; color: black; }
 
-    /* New: Filter area styles */
+    
     .lib-filters {
         margin-bottom: 30px;
     }
@@ -456,16 +453,15 @@
     }
 
     .category-btn.active {
-        background: var(--ps-light-blue); /* Uses theme accent color */
-        border-color: var(--ps-light-blue); /* Uses theme accent color */
+        background: var(--ps-light-blue); 
+        border-color: var(--ps-light-blue); 
         font-weight: bold;
     }
     .category-btn:hover {
         background: rgba(255,255,255,0.3);
     }
 
-    /* End New: Filter area styles */
-
+    
 
     .lib-grid {
         display: grid;
@@ -484,7 +480,7 @@
     }
     body.theme-hacker .lib-card { background: #011 !box-shadow: none; }
     body.theme-tokyo .lib-card { background: #102; box-shadow: none; }
-    body.theme-red .lib-card { background: #200; box-shadow: none; } /* Red theme adjustment */
+    body.theme-red .lib-card { background: #200; box-shadow: none; } 
 
     .lib-card:hover { transform: scale(1.05); box-shadow: 0 5px 15px rgba(0,0,0,0.5); z-index: 2;}
     .lib-card img { width: 100%; height: 100%; object-fit: cover; }
@@ -494,7 +490,6 @@
         text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
     }
 
-/* Fullscreen iframe fix - REPLACED VERSION */
 .game-modal {
     position: fixed !important;
     top: 0 !important;
@@ -524,10 +519,10 @@
     color: white !important;
     gap: 10px !important;
 }
-/* Ensure the bar background is themed or dark */
+
 body.theme-hacker .game-modal > div:first-child { background: #000 !important; color: #00ff88 !important; }
 body.theme-tokyo .game-modal > div:first-child { background: #111 !important; color: #ff4aff !important; }
-body.theme-red .game-modal > div:first-child { background: #3a0000 !important; color: var(--ps-light-blue) !important; } /* Red theme fix */
+body.theme-red .game-modal > div:first-child { background: #3a0000 !important; color: var(--ps-light-blue) !important; } 
 
 .game-modal > div:last-child {
     position: relative !important;
@@ -545,13 +540,12 @@ body.theme-red .game-modal > div:first-child { background: #3a0000 !important; c
     border: none !important;
 }
 
-/* Updated styles for iframe buttons to inherit site colors/theme better */
 .game-modal button,
 .game-modal .close-btn {
-    /* Use current color properties which change with the theme */
+    
     background: rgba(255,255,255,0.2) !important;
-    border: 1px solid currentColor !important; /* Uses the current text color */
-    color: currentColor !important; /* Uses the current text color */
+    border: 1px solid currentColor !important; 
+    color: currentColor !important; 
     padding: 4px 12px !important;
     border-radius: 4px !important;
     cursor: pointer !important;
@@ -567,7 +561,6 @@ body.theme-red .game-modal > div:first-child { background: #3a0000 !important; c
     color: black !important;
 }
 
-/* Fix hide bar button - ADD THIS */
 .game-modal .top-bar {
     position: relative !important;
     z-index: 10000 !important;
@@ -593,13 +586,11 @@ body.theme-red .game-modal > div:first-child { background: #3a0000 !important; c
     line-height: 1 !important;
 }
 
-/* Targeting the specific element for display: none */
 .game-modal > div:first-child[style*="display: none"] ~ div .show-bar-btn {
     display: block !important;
 }
 
-
-    /* Other Things tabs buttons row */
+    
     .other-tabs {
         display:flex; gap:10px; margin-bottom:20px;
         flex-wrap: wrap;
@@ -622,12 +613,12 @@ body.theme-red .game-modal > div:first-child { background: #3a0000 !important; c
         color: black;
     }
 
-    /* Upload input hidden; use label button */
+    
     #bgUploadInput {
         display:none;
     }
     
-    /* NEW CSS for Sound Toggle Switch */
+    
     .sound-control {
         display: flex;
         align-items: center;
@@ -673,7 +664,7 @@ body.theme-red .game-modal > div:first-child { background: #3a0000 !important; c
     }
     
     input:checked + .slider {
-        background-color: var(--ps-light-blue); /* Uses theme accent color */
+        background-color: var(--ps-light-blue); 
     }
     
     input:focus + .slider {
@@ -690,7 +681,7 @@ body.theme-red .game-modal > div:first-child { background: #3a0000 !important; c
 
     <div class="top-bar">
         <div class="site-title-group">
-            <div class="site-title"><img src="/new logo.png" alt="Alexr Games Logo"> Alexr's World</div>
+            <div class="site-title"><img src="/new logo.png" alt="Alexr's World Logo"> Alexr's World</div>
         </div>
         
         <div class="nav-hint" id="navHint">Navigate with &larr;&rarr; Arrow Keys or Mouse</div>
@@ -816,7 +807,6 @@ body.theme-red .game-modal > div:first-child { background: #3a0000 !important; c
             <button class="close-btn" onclick="resetCloak()">Reset Cloak</button>
         </div>
 
-
         <div id="other_sounds" style="display:none;">
             <p>Toggle Sound Effects and Ambience:</p>
             <div class="sound-control">
@@ -847,9 +837,9 @@ body.theme-red .game-modal > div:first-child { background: #3a0000 !important; c
         const libSearchInput = document.getElementById('libSearchInput');
         const libCategoriesDiv = document.getElementById('libCategories');
         const gameSuggestionsDatalist = document.getElementById('game-suggestions');
-        const subContent = document.querySelector('.sub-content'); // NEW: Reference to sub-content area
+        const subContent = document.querySelector('.sub-content'); 
 
-        let allGamesData = []; // This will be populated by the fetch() call
+        let allGamesData = []; 
         let displayList = [];
         let selectedIndex = 0;
         let isLibraryOpen = false;
@@ -859,7 +849,7 @@ body.theme-red .game-modal > div:first-child { background: #3a0000 !important; c
         let currentCategoryFilter = 'All';
         let areSoundsEnabled = false;
 
-        // System item definitions
+        
         const settingsItem = {
             title: "Settings",
             category: "Changelog, Themes & more!",
@@ -876,7 +866,7 @@ body.theme-red .game-modal > div:first-child { background: #3a0000 !important; c
             icon: "fa-heart"
         };
         
-        // NEW SYSTEM TILES
+        
         const suggestItem = {
             title: "Suggest a Title",
             category: "Suggest a title",
@@ -903,7 +893,7 @@ body.theme-red .game-modal > div:first-child { background: #3a0000 !important; c
             icon: "fa-th"
         };
         
-        /* --- SOUND MANAGER --- */
+        
         
         const ambience = new Audio('sounds/ambience.mp3');
         ambience.loop = true;
@@ -956,7 +946,7 @@ body.theme-red .game-modal > div:first-child { background: #3a0000 !important; c
         
         function playAmbience() {
             if (areSoundsEnabled) {
-                // Check if a game is open or an overlay is up before playing
+                
                 if (!document.querySelector('.game-modal') && !isLibraryOpen && !isOtherOpen) {
                     ambience.play().catch(e => console.warn("Ambience playback failed:", e));
                 }
@@ -966,9 +956,9 @@ body.theme-red .game-modal > div:first-child { background: #3a0000 !important; c
         function pauseAmbience() {
             ambience.pause();
         }
-        /* --- END SOUND MANAGER --- */
+        
 
-        /* THEME + CUSTOM BACKGROUND */
+        
 
         function togglePS5Backgrounds() {
             const isEnabled = document.body.classList.toggle('ps5-bg-enabled');
@@ -1056,7 +1046,7 @@ body.theme-red .game-modal > div:first-child { background: #3a0000 !important; c
             });
         }
 
-        // Load favorites from localStorage
+        
         function loadFavorites() {
             const saved = localStorage.getItem('alexrGames_favorites');
             if (saved) {
@@ -1070,18 +1060,18 @@ body.theme-red .game-modal > div:first-child { background: #3a0000 !important; c
         }
 
         function saveFavorites() {
-            // NOTE: This still saves favorite status, which is independent of the game list.
+            
             localStorage.setItem('alexrGames_favorites', JSON.stringify(Array.from(favoritesSet)));
         }
         
-        // ** MODIFIED: New function to force-load data from games.json **
+        
         async function loadGames() {
             loadFavorites(); 
 
-            // Clear the old game list data from localStorage (Prevents game list override)
+            
             localStorage.removeItem('alexrGames_allGamesData');
             
-            // Fetch games.json from the server
+            
             try {
                 const response = await fetch('https://cdn.jsdelivr.net/gh/dskjfoisjfsjio/alexrsworld@main/games.json');
                 if (!response.ok) {
@@ -1089,7 +1079,7 @@ body.theme-red .game-modal > div:first-child { background: #3a0000 !important; c
                 }
                 const data = await response.json();
                 
-                // Assuming games.json contains the array directly, or a property like "allGamesData"
+                
                 allGamesData = Array.isArray(data) ? data : data.allGamesData || [];
 
                 if (allGamesData.length === 0) {
@@ -1098,7 +1088,7 @@ body.theme-red .game-modal > div:first-child { background: #3a0000 !important; c
 
             } catch(e) {
                 console.error("Failed to fetch games.json. Please ensure the file exists and is valid JSON.", e);
-                allGamesData = []; // Ensure it is an empty array on failure
+                allGamesData = []; 
             }
 
             buildLists();
@@ -1107,29 +1097,29 @@ body.theme-red .game-modal > div:first-child { background: #3a0000 !important; c
         function buildLists() {
             const firstSix = allGamesData.slice(0, 6);
             
-            // MODIFIED: Order system tiles as requested: [Suggest, Report, Favorites, Settings, ...Games, Library]
+            
             displayList = [suggestItem, reportItem, favoritesItem, settingsItem, ...firstSix, libraryItem];
             
             initCarousel();
             initLibraryGrid();
         }
 
-        // REMOVED: The function saveGamesOrder() is removed. Game order is no longer saved.
+        
 
-        // MODIFIED: promoteToRecent now only reorders the list in-memory (for the current session)
+        
         function promoteToRecent(game) {
             allGamesData = allGamesData.filter(g => g.title !== game.title);
             allGamesData.unshift(game);
-            // The saveGamesOrder() call was removed.
+            
             buildLists();
-            // index 0=Suggest, 1=Report, 2=Favorites, 3=Settings, 4=first game
+            
             updateSelection(4); 
         }
 
         function initCarousel() {
             carousel.innerHTML = '';
 
-            // Clean up drag-over class from previous attempts
+            
             document.querySelectorAll('.drag-over').forEach(el => el.classList.remove('drag-over'));
             
             displayList.forEach((game, index) => {
@@ -1137,81 +1127,81 @@ body.theme-red .game-modal > div:first-child { background: #3a0000 !important; c
                 card.className = `card ${game.systemType ? 'system-card' : ''}`;
                 card.dataset.index = index;
                 
-                // --- DRAG AND DROP SETUP ---
-                // Game cards are indices 4 up to, but not including, the last item (Library)
+                
+                
                 const isGameCard = index >= 4 && index < displayList.length - 1;
-                // NOTE: Dragging/reordering will only work for the current session since saving is disabled.
+                
                 card.draggable = isGameCard ? 'true' : 'false'; 
                 
                 if (isGameCard) {
-                    // Start dragging
+                    
                     card.addEventListener('dragstart', (e) => {
-                        playSound('hover'); // Use hover sound for drag start
+                        playSound('hover'); 
                         card.classList.add('dragging');
-                        // Store the index of the dragged item
+                        
                         e.dataTransfer.setData('text/plain', index.toString());
-                        // Set the allowed effect
+                        
                         e.dataTransfer.effectAllowed = 'move'; 
                     });
                     
-                    // Allow dropping onto other cards
+                    
                     card.addEventListener('dragover', (e) => {
-                        // Prevent default to allow drop
+                        
                         e.preventDefault(); 
                         const draggedIdx = parseInt(e.dataTransfer.getData('text/plain'));
-                        // Only allow drag-over on another game card and not dragging onto itself
+                        
                         if (index !== draggedIdx && isGameCard) {
                             card.classList.add('drag-over');
                             e.dataTransfer.dropEffect = 'move';
                         }
                     });
                     
-                    // Remove visual on drag leave
+                    
                     card.addEventListener('dragleave', () => {
                         card.classList.remove('drag-over');
                     });
                     
-                    // Handle drop event
+                    
                     card.addEventListener('drop', (e) => {
                         e.preventDefault();
                         card.classList.remove('drag-over');
-                        playSound('select'); // Play select sound upon successful drop
+                        playSound('select'); 
 
                         const draggedListIndex = parseInt(e.dataTransfer.getData('text/plain'));
                         const targetListIndex = index;
                         
-                        // Safety checks: ensure both are actual game cards in the carousel and not the same index
+                        
                         if (draggedListIndex < 4 || targetListIndex < 4 || 
                             draggedListIndex >= displayList.length - 1 || targetListIndex >= displayList.length - 1 || 
                             draggedListIndex === targetListIndex) {
                             return; 
                         }
                         
-                        // 1. Calculate the index within the 'allGamesData' array (carousel game list starts at index 4)
+                        
                         const oldGameIndex = draggedListIndex - 4;
                         const newGameIndex = targetListIndex - 4;
 
-                        // 2. Perform the move on the main list (in-memory only)
+                        
                         const [movedGame] = allGamesData.splice(oldGameIndex, 1);
                         allGamesData.splice(newGameIndex, 0, movedGame);
                         
-                        // 3. Rebuild UI
-                        buildLists(); // Rebuilds displayList and initCarousel
-                        updateSelection(targetListIndex); // Select the item in its new position
+                        
+                        buildLists(); 
+                        updateSelection(targetListIndex); 
                     });
                     
-                    // Clean up after dragging is complete
+                    
                     card.addEventListener('dragend', () => {
                         card.classList.remove('dragging');
-                        // Clean up the target's drag-over class if needed
+                        
                         document.querySelectorAll('.drag-over').forEach(el => el.classList.remove('drag-over'));
                     });
                 }
-                // --- END DRAG AND DROP SETUP ---
+                
                 
                 if (game.systemType) {
-                    // MODIFIED: Removed the titleSpan logic to delete text labels below the icon.
-                    // The icon is now vertically centered within the system tile.
+                    
+                    
                     card.innerHTML = `<i class="fas ${game.icon}"></i>`;
                     card.style.justifyContent = 'center';
                     card.style.alignItems = 'center';
@@ -1222,12 +1212,12 @@ body.theme-red .game-modal > div:first-child { background: #3a0000 !important; c
                     card.appendChild(img);
                 }
                 
-                // Click handler: Plays 'hover' sound on selection change
+                
                 card.addEventListener('click', () => {
                     if(selectedIndex === index) {
-                        activateItem(index); // Plays 'select' sound
+                        activateItem(index); 
                     } else {
-                        playSound('hover'); // Plays 'hover' sound when selecting a new item
+                        playSound('hover'); 
                         updateSelection(index);
                     }
                 });
@@ -1235,7 +1225,7 @@ body.theme-red .game-modal > div:first-child { background: #3a0000 !important; c
                 carousel.appendChild(card);
             });
 
-            // Default to first game if exists (index 4 in new layout)
+            
             updateSelection(displayList.findIndex(g => !g.systemType) || 0); 
         }
 
@@ -1291,7 +1281,7 @@ body.theme-red .game-modal > div:first-child { background: #3a0000 !important; c
                 libraryTitle.textContent = 'All Games';
                 gamesToShow = allGamesData;
                 
-                // Filtering logic
+                
                 const searchTerm = libSearchInput.value.toLowerCase().trim();
                 
                 gamesToShow = gamesToShow.filter(game => {
@@ -1348,7 +1338,6 @@ body.theme-red .game-modal > div:first-child { background: #3a0000 !important; c
             
             carousel.style.transform = `translateX(-${offset}px)`;
 
-
             const g = displayList[index];
             document.getElementById('gameTitle').innerText = g.title || '';
             document.getElementById('gameCat').innerText = g.category || 'Game';
@@ -1365,7 +1354,7 @@ body.theme-red .game-modal > div:first-child { background: #3a0000 !important; c
                 bg1.src = ""; bg2.src = "";
             }
 
-            // NEW FIX: Hide sub-content area for system tiles
+            
             if (g.systemType) {
                 subContent.classList.add('hidden');
                 document.getElementById('gameTitle').innerText = g.title;
@@ -1416,7 +1405,7 @@ body.theme-red .game-modal > div:first-child { background: #3a0000 !important; c
             } else {
                 libOverlay.style.opacity = '0';
                 setTimeout(()=>libOverlay.classList.remove('show'), 300);
-                // Resume ambience if returning to home menu (no other overlay and no game)
+                
                 if (!isOtherOpen && !document.querySelector('.game-modal')) {
                     playAmbience();
                 }
@@ -1438,7 +1427,7 @@ body.theme-red .game-modal > div:first-child { background: #3a0000 !important; c
                 playSound('click');
                 otherOverlay.style.opacity = '0';
                 setTimeout(() => otherOverlay.classList.remove('show'), 300);
-                // Resume ambience if returning to home menu (no other overlay and no game)
+                
                 if (!isLibraryOpen && !isOtherOpen) {
                     playAmbience();
                 }
@@ -1463,7 +1452,7 @@ body.theme-red .game-modal > div:first-child { background: #3a0000 !important; c
             const modal = document.createElement('div');
            modal.className = 'game-modal'; 
 
-            // --- 1. Top Bar Setup (Common to both) ---
+            
             const bar = document.createElement('div');
             Object.assign(bar.style, {
                 height: '40px', background: '#222', display: 'flex',
@@ -1471,14 +1460,14 @@ body.theme-red .game-modal > div:first-child { background: #3a0000 !important; c
                 justifyContent: 'space-between', color:'white', gap:'10px'
             });
 
-            // Apply theme colors to the bar explicitly
+            
             const currentBodyTheme = document.body.className.match(/theme-(\w+)/)?.[1] || 'default';
             if (currentBodyTheme === 'hacker') {
                 Object.assign(bar.style, { background: '#000', color: '#00ff88' });
             } else if (currentBodyTheme === 'tokyo') {
                 Object.assign(bar.style, { background: '#111', color: '#ff4aff' });
             } else if (currentBodyTheme === 'red') {
-                // Red theme fix using CSS variable
+                
                 const redAccent = getComputedStyle(document.body).getPropertyValue('--ps-light-blue');
                 Object.assign(bar.style, { background: '#3a0000', color: redAccent });
             }
@@ -1490,9 +1479,9 @@ body.theme-red .game-modal > div:first-child { background: #3a0000 !important; c
             controls.style.display = 'flex';
             controls.style.gap = '8px';
 
-            // --- 2. Button Handlers (Common to both) ---
             
-            // Reusable logic for opening in about:blank
+            
+            
             const openAboutBlank = () => {
                 const w = window.open('about:blank', '_blank');
                 if (w && w.document) {
@@ -1548,13 +1537,13 @@ body.theme-red .game-modal > div:first-child { background: #3a0000 !important; c
             btnClose.onclick = () => {
                 playSound('click');
                 document.body.removeChild(modal);
-                // Only resume ambience if no system overlay is open
+                
                 if (!isLibraryOpen && !isOtherOpen) {
                     playAmbience();
                 }
             };
             
-            // Assemble controls
+            
             controls.appendChild(btnAboutBlank);
             controls.appendChild(btnDownload);
             controls.appendChild(btnFav);
@@ -1564,7 +1553,7 @@ body.theme-red .game-modal > div:first-child { background: #3a0000 !important; c
             bar.appendChild(leftSpan);
             bar.appendChild(controls);
 
-            // --- 3. Content Area Setup (Custom per iframe status) ---
+            
             const frameWrapper = document.createElement('div');
             frameWrapper.style.position = 'relative';
             frameWrapper.style.flex = '1';
@@ -1582,9 +1571,8 @@ body.theme-red .game-modal > div:first-child { background: #3a0000 !important; c
                 showBarBtn.style.display = 'none';
             };
 
-
             if (game.iframe) {
-                // Content: Game iframe
+                
                 const frame = document.createElement('iframe');
                 frame.src = game.path;
                 frame.style.flex = 1;
@@ -1594,7 +1582,7 @@ body.theme-red .game-modal > div:first-child { background: #3a0000 !important; c
                 frameWrapper.appendChild(showBarBtn);
 
             } else {
-                // Content: Custom message for unsupported game (User Request)
+                
                 frameWrapper.style.display = 'flex';
                 frameWrapper.style.flexDirection = 'column';
                 frameWrapper.style.justifyContent = 'center';
@@ -1618,13 +1606,13 @@ body.theme-red .game-modal > div:first-child { background: #3a0000 !important; c
                 instructionsP.style.color = '#ccc';
                 instructionsP.style.marginTop = '0';
                 
-                // Use a styled button for the About:blank link
+                
                 const bigAboutBlankBtn = btnAboutBlank.cloneNode(true);
                 bigAboutBlankBtn.textContent = 'Open in About:blank';
                 bigAboutBlankBtn.style.marginTop = '20px';
                 bigAboutBlankBtn.style.padding = '10px 30px';
                 bigAboutBlankBtn.style.fontSize = '1.1rem';
-                bigAboutBlankBtn.onclick = openAboutBlank; // Re-wire handler
+                bigAboutBlankBtn.onclick = openAboutBlank; 
                 
                 messageDiv.appendChild(messageP);
                 messageDiv.appendChild(instructionsP);
@@ -1633,11 +1621,11 @@ body.theme-red .game-modal > div:first-child { background: #3a0000 !important; c
                 frameWrapper.appendChild(messageDiv);
             }
 
-            // --- 4. Final Assembly & Launch (Common to both) ---
+            
             modal.appendChild(bar);
             modal.appendChild(frameWrapper);
             document.body.appendChild(modal);
-            // Game order is only re-shuffled in memory, not saved permanently
+            
             promoteToRecent(game); 
         }
         function updateFavoriteTile(game) {
@@ -1646,7 +1634,7 @@ body.theme-red .game-modal > div:first-child { background: #3a0000 !important; c
             const status = document.getElementById('favoriteStatus');
 
             if (!game || game.systemType) {
-                // Should not happen as sub-content is hidden, but for safety:
+                
                 tile.style.background = 'linear-gradient(135deg, #555, #333)';
                 label.textContent = "Favorite this game";
                 status.textContent = "Unavailable for system tiles";
@@ -1667,7 +1655,7 @@ body.theme-red .game-modal > div:first-child { background: #3a0000 !important; c
             }
 
             tile.onclick = () => {
-                // ADDED: Play select sound when the tile is clicked
+                
                 playSound('select'); 
                 
                 if (favoritesSet.has(game.title)) {
@@ -1721,7 +1709,7 @@ body.theme-red .game-modal > div:first-child { background: #3a0000 !important; c
             }
         }
 
-        // Clock
+        
         setInterval(() => {
             const now = new Date();
             const h = String(now.getHours()).padStart(2, '0');
@@ -1729,7 +1717,7 @@ body.theme-red .game-modal > div:first-child { background: #3a0000 !important; c
             document.getElementById('clock').innerText = `${h}:${m}`;
         }, 1000);
 
-        // Inputs
+        
         window.addEventListener('keydown', (e) => {
             if (isLibraryOpen || isOtherOpen) {
                 if(e.key === 'Escape') {
@@ -1759,7 +1747,7 @@ body.theme-red .game-modal > div:first-child { background: #3a0000 !important; c
         });
 
         
-        /* --- TAB CLOAKING --- */
+        
         function setFavicon(url) {
             let link = document.querySelector("link[rel~='icon']");
             if (!link) {
@@ -1790,49 +1778,49 @@ body.theme-red .game-modal > div:first-child { background: #3a0000 !important; c
             }
         }
 
-       // RESET CLOAK FUNCTION (Standard functionality remains)
+       
         function resetCloak() {
-            // --- 1. Reset Cloaking (Title & Icon) ---
-            document.title = "Alexr Games";
+            
+            document.title = "Alexr's World";
             const icon = document.querySelector("link[rel~='icon']");
             if (icon) icon.remove();
             localStorage.removeItem('alexrGames_cloak_title');
             localStorage.removeItem('alexrGames_cloak_icon');
 
-            // --- 2. Reset Theme to default ('default' theme is typically the PS4 light blue) ---
+            
             localStorage.removeItem('alexrGames_theme');
             localStorage.removeItem('alexrGames_custom_background'); 
             
-            // Attempt to visually set the theme back to default immediately
+            
             if (typeof setTheme === 'function') {
                 setTheme('default'); 
             } else {
-                // Fallback: Remove all dynamic theme classes
+                
                 document.body.className = document.body.className.split(' ').filter(c => !c.startsWith('theme-')).join(' ');
-                document.body.classList.add('theme-default'); // Assuming 'theme-default' is the base class
+                document.body.classList.add('theme-default'); 
             }
 
-            // --- 3. Reset PS5 Background setting ---
+            
             localStorage.removeItem('alexrGames_ps5_bg_enabled');
             document.body.classList.remove('ps5-background-enabled'); 
-            // Update the button text if it exists (Optional UI cleanup)
+            
             const ps5ToggleButton = document.getElementById('ps5BgToggle');
             if (ps5ToggleButton) {
                 ps5ToggleButton.textContent = 'PS5 Background: OFF';
             }
 
-            // --- 4. Reset Sound settings ---
+            
             localStorage.removeItem('alexrGames_sound_enabled');
             localStorage.removeItem('alexrGames_ambience_volume');
-            // If sound functions exist, restore defaults
+            
             if (typeof toggleSound === 'function') {
-                // toggleSound(true); // Default to enabled
+                
             }
             if (typeof updateAmbienceVolume === 'function') {
-                updateAmbienceVolume(0.5); // Default volume level
+                updateAmbienceVolume(0.5); 
             }
             
-            // --- 5. Reload to apply all changes consistently ---
+            
             alert("All settings (Cloaking, Theme, Sound, PS5 BG) reset to default! The page will now reload.");
             window.location.reload(); 
         }
@@ -1843,7 +1831,7 @@ body.theme-red .game-modal > div:first-child { background: #3a0000 !important; c
             if (i) setFavicon(i);
         }
 
-        // Initialize
+        
         loadCloak();
         loadTheme();
         loadGames();
@@ -1852,8 +1840,7 @@ body.theme-red .game-modal > div:first-child { background: #3a0000 !important; c
     </script>
 
 <style>
-/* RED THEME OVERRIDES (match other themes) */
-/* The main theme-red block above handles most of this now, but keeping the background override for safety/clarity */
+
 body.theme-red {
     background-color: #3a0000 !important;
     background-image:
