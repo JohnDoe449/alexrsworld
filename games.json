@@ -2259,7 +2259,7 @@
   },
 
 
-  {
+ {
     "title": "Pokemon Sapphire Version",
     "img": "https://cdn.jsdelivr.net/gh/dskjfoisjfsjio/Standalone-games@main/assets/sapphire.webp",
     "description": "Play the classic Pokemon Sapphire Version game now!",
@@ -2267,63 +2267,54 @@
     "category": "Strategy",
     "iframe": true
   },
-
   {
     "title": "Pokemon Fire Red Version",
-    "img": "https://raw.githubusercontent.com/dskjfoisjfsjio/dskjfoisjfsjio.github.io/main/assets/game%20images/firered.jpg",
+    "img": "https://cdn.jsdelivr.net/gh/dskjfoisjfsjio/Standalone-games@main/assets/firered.jpg",
     "description": "Play the classic Pokemon Fire Red Version game now!",
     "path": "Games/emulated/GBA/fireredversion.html",
     "category": "Strategy",
     "iframe": true
   },
-
-
   {
     "title": "Pokemon Leaf Green Version",
-    "img": "https://raw.githubusercontent.com/dskjfoisjfsjio/dskjfoisjfsjio.github.io/main/assets/game%20images/leafgreen.jpg",
+    "img": "https://cdn.jsdelivr.net/gh/dskjfoisjfsjio/Standalone-games@main/assets/leafgreen.jpg",
     "description": "Play the classic Pokemon Leaf Green Version game now!",
     "path": "Games/emulated/GBA/leafgreenversion.html",
     "category": "Strategy",
     "iframe": true
   },
-
-
   {
     "title": "Pokemon Emerald Version",
-    "img": "https://raw.githubusercontent.com/dskjfoisjfsjio/dskjfoisjfsjio.github.io/main/assets/game%20images/emeral.avif",
+    "img": "https://cdn.jsdelivr.net/gh/dskjfoisjfsjio/Standalone-games@main/assets/emerald.avif",
     "description": "Play the classic Pokemon Emerald Version game now!",
     "path": "Games/emulated/GBA/emeraldversion.html",
     "category": "Strategy",
     "iframe": true
   },
-
-{
-  "title:": "Mario Kart 64",
-  "img": "https://raw.githubusercontent.com/dskjfoisjfsjio/dskjfoisjfsjio.github.io/main/assets/game%20images/kart64.jpg",
-  "description": "Race against the other racers and prove yourseld victorious in this classic game.",
-  "path": "Games/emulated/N64/mariokart64.html",
-  "category": "Racing",
-  "iframe": true
-},
-
-{
-  "title": "Super Mario 64",
-  "img": "https://raw.githubusercontent.com/dskjfoisjfsjio/dskjfoisjfsjio.github.io/main/assets/game%20images/super mario 64.webp",
-  "description": "Join Mario on his quest to save Princess Peach in this classic 3D platformer.",
-  "path": "Games/emulated/N64/supermario64.html",
-  "category": "Adventure",
-  "iframe": true
-},
-
-{
-  "title": "Earthbound",
-  "img": "https://raw.githubusercontent.com/dskjfoisjfsjio/dskjfoisjfsjio.github.io/main/assets/game%20images/earthbound.webp",
-  "description": "Embark on a unique RPG adventure in the quirky world of Earthbound.",
-  "path": "Games/emulated/SNES/earthbound.html",
-  "category": "Adventure",
-  "iframe": true
-},
-
+  {
+    "title": "Mario Kart 64",
+    "img": "https://cdn.jsdelivr.net/gh/dskjfoisjfsjio/Standalone-games@main/assets/kart64.jpg",
+    "description": "Race against the other racers and prove yourseld victorious in this classic game.",
+    "path": "Games/emulated/N64/mariokart64.html",
+    "category": "Racing",
+    "iframe": true
+  },
+  {
+    "title": "Super Mario 64",
+    "img": "https://cdn.jsdelivr.net/gh/dskjfoisjfsjio/Standalone-games@main/assets/super mario 64.webp",
+    "description": "Join Mario on his quest to save Princess Peach in this classic 3D platformer.",
+    "path": "Games/emulated/N64/supermario64.html",
+    "category": "Adventure",
+    "iframe": true
+  },
+  {
+    "title": "Earthbound",
+    "img": "https://cdn.jsdelivr.net/gh/dskjfoisjfsjio/Standalone-games@main/assets/earthbound.webp",
+    "description": "Embark on a unique RPG adventure in the quirky world of Earthbound.",
+    "path": "Games/emulated/SNES/earthbound.html",
+    "category": "Adventure",
+    "iframe": true
+  },
 
   {
     "title": "Soundboard",
