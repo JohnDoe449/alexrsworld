@@ -1,3 +1,4 @@
+
 [
   {
     "title": "Slope",
@@ -1405,6 +1406,27 @@
     "category": "Challenging",
     "iframe": false
   },
+
+
+  {
+    "title": "Five Nights At Freddy's 4 Hallowen Edition",
+    "img": "https://raw.githubusercontent.com/dskjfoisjfsjio/Standalone-games/main/assets/fnaf4halloween.jpg",
+    "description": "The Halloween Edition of Five Nights At Freddy's 4!",
+    "path": "Games/standalone/fnaf4halloween.html",
+    "category": "Challenging",
+    "iframe": false 
+  },
+
+
+  {
+    "title": "Ultimate Custom Night",
+    "img": "https://raw.githubusercontent.com/dskjfoisjfsjio/dskjfoisjfsjio.github.io/main/assets/game%20images/ucn.jpg",
+    "description": "Ultimate Custom Night is a horror game where you are able to customize how the night plays out.",
+    "path": "Games/standalone/ultimatecustomnight.html",
+    "category": "Challenging",
+    "iframe": false
+  },
+
   {
     "title": "Idle Breakout",
     "img": "https://raw.githubusercontent.com/dskjfoisjfsjio/dskjfoisjfsjio.github.io/main/assets/game%20images/idle%20breakout.png",
@@ -2251,7 +2273,7 @@
 
   {
     "title": "Pokemon Ruby Version",
-    "img": "https://raw.githubusercontent.com/dskjfoisjfsjio/Standalone-games/main/assets/ruby.jpg",
+    "img": "https://cdn.jsdelivr.net/gh/dskjfoisjfsjio/Standalone-games@main/assets/ruby.jpg",
     "description": "Play the classic Pokemon Ruby Version game now!",
     "path": "Games/emulated/GBA/rubyversion.html",
     "category": "Strategy",
