@@ -36,7 +36,7 @@
     "title": "Bloons Tower Defense 4",
     "img": "https://raw.githubusercontent.com/dskjfoisjfsjio/dskjfoisjfsjio.github.io/main/assets/game%20images/btd%204.jpg",
     "description": "Bloons Tower Defense 4 is a classic tower defense game initially released in Flash.",
-    "path": "/Games/ruffle/btd4.html",
+    "path": "Games/ruffle/btd4.html",
     "category": "Strategy",
     "iframe": true
   },
@@ -69,7 +69,7 @@
     "title": "Bloons Super Monkey",
     "img": "https://raw.githubusercontent.com/dskjfoisjfsjio/dskjfoisjfsjio.github.io/main/assets/game%20images/bloons%20super%20monkey.jpg",
     "description": "Bloons Super Monkey is an arcade Bloons game and the first game in the Bloons Super Monkey series.",
-    "path": "/Games/ruffle/bloonssupermonkey.html",
+    "path": "Games/ruffle/bloonsupermonkey.html",
     "category": "Arcade",
     "iframe": true
   },
