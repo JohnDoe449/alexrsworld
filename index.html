@@ -1259,7 +1259,7 @@ let draggedLibTitle = null;
     localStorage.removeItem('alexrGames_allGamesData');
     
     try {
-        const response = await fetch('https://raw.githubusercontent.com/dskjfoisjfsjio/alexrsworld/main/games.json');
+const response = await fetch('https://raw.githubusercontent.com/.../games.json?t=' + Date.now());
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
