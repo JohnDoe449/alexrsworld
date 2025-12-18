@@ -1,0 +1,2330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alexr's World</title>
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/dskjfoisjfsjio/alexrsworld@main/new%20logo.png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+    
+    :root {
+        --ps-blue: #00439c;
+        --ps-light-blue: #00a0e9; 
+        --text-white: #e3f2fd;
+        --card-size: 130px;
+        --card-selected: 180px;
+        --anim-speed: 0.25s;
+    }
+
+    * { box-sizing: border-box; user-select: none; }
+
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: #003791;
+        background-image: 
+            radial-gradient(circle at 50% 0%, rgba(255,255,255,0.1) 0%, transparent 60%),
+            linear-gradient(110deg, #003791 0%, #005c9e 50%, #003791 100%);
+        background-size: 200% 200%;
+        color: white;
+        font-family: "SST", "Segoe UI", sans-serif;
+        height: 100vh;
+        overflow: hidden;
+        animation: bgFlow 15s ease infinite;
+        background-position: 0% 50%;
+        background-repeat: no-repeat;
+    }
+
+    
+    body.theme-default {
+        background-color: #003791;
+        background-image: 
+            radial-gradient(circle at 50% 0%, rgba(255,255,255,0.1) 0%, transparent 60%),
+            linear-gradient(110deg, #003791 0%, #005c9e 50%, #003791 100%);
+        --ps-light-blue: #00a0e9; 
+    }
+
+    body.theme-dark {
+        background-color: #050816;
+        background-image: radial-gradient(circle at 0 0, #222 0%, transparent 55%),
+                          radial-gradient(circle at 100% 100%, #111 0%, transparent 55%),
+                          linear-gradient(135deg,#050816,#000000);
+        --ps-light-blue: #999999;
+    }
+
+    
+    body.theme-red {
+        background-color: #3a0000 !important;
+        background-image:
+            radial-gradient(circle at 20% 0, rgba(255,80,80,0.25) 0%, transparent 55%),
+            radial-gradient(circle at 80% 100%, rgba(180,0,0,0.35) 0%, transparent 55%),
+            linear-gradient(135deg, #3a0000, #7a0000) !important;
+        --ps-light-blue: #ff4d4d !important; 
+    }
+    body.theme-red .card {
+        background: rgba(60,0,0,0.6) !important;
+    }
+    body.theme-red .card.active {
+        box-shadow: 0 0 0 4px #ff4d4d, 0 10px 20px rgba(0,0,0,0.8) !important;
+    }
+
+    body.theme-blue-dark {
+        background-color: #020b1a;
+        background-image: linear-gradient(135deg,#020b1a,#012b45);
+        --ps-light-blue: #44aaff;
+    }
+    
+    
+    body.theme-hacker {
+        background-color: #000000;
+        background-image: radial-gradient(circle at 20% 0, rgba(0,255,0,0.25) 0%, transparent 55%),
+                          radial-gradient(circle at 80% 100%, rgba(0,255,0,0.25) 0%, transparent 55%);
+        color: #00ff88;
+        --ps-light-blue: #00ff88; 
+    }
+    
+    
+    body.theme-tokyo {
+        background-color: #050016;
+        background-image: radial-gradient(circle at 10% 0, rgba(255,0,128,0.35) 0%, transparent 55%),
+                          radial-gradient(circle at 90% 100%, rgba(0,255,255,0.35) 0%, transparent 55%),
+                          linear-gradient(135deg,#050016,#001133);
+        color: #e3f2fd; 
+        --ps-light-blue: #ff4aff; 
+    }
+
+    
+    body.has-custom-bg {
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        animation: none;
+    }
+
+    
+    .game-bg-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        opacity: 0;
+        transition: opacity 0.6s ease;
+        pointer-events: none;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        filter: blur(20px) brightness(0.4);
+        transform: scale(1.1);
+    }
+
+    body.ps5-bg-enabled .game-bg-overlay.active {
+        opacity: 1;
+    }
+
+    @keyframes bgFlow {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    
+    .top-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 30px 60px;
+        font-size: 1.5rem;
+        opacity: 0.9;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        position: relative; 
+    }
+
+
+    .top-bar.hidden {
+        display: none !important;
+        opacity: 0 !important;
+        transform: translateY(-6px);
+        transition: opacity 0.15s ease, transform 0.12s ease;
+    }
+    
+    
+    .site-title-group { display: inline-block; }
+
+    .site-title {
+        font-weight: 300;
+        font-size: 1.8rem;
+        letter-spacing: 1px;
+        display: flex;
+        align-items: center;
+    }
+    
+    .site-title img { 
+        height: 30px; 
+        margin-right: 10px; 
+    }
+    
+    
+    .nav-hint {
+        position: absolute; 
+        left: 50%; 
+        top: 50%; 
+        transform: translate(-50%, -50%); 
+        z-index: 5; 
+        
+        font-size: 0.85rem;
+        font-weight: 300;
+        color: rgba(255, 255, 255, 0.7);
+        
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        white-space: nowrap; 
+    }
+
+    .clock-area {
+        font-size: 1.2rem;
+        font-weight: 300;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+    
+    
+    .social-icons a {
+        color: inherit; 
+        transition: color 0.2s;
+    }
+    .social-icons a:hover {
+        color: var(--ps-light-blue); 
+    }
+    .social-icons {
+        display: flex;
+        gap: 15px;
+        font-size: 1.4rem;
+        color: white; 
+    }
+    body.theme-hacker .social-icons { color: #00ff88; }
+    body.theme-tokyo .social-icons { color: #ff4aff; }
+    body.theme-red .social-icons { color: var(--ps-light-blue); } 
+
+    
+    .main-stage {
+        margin-top: 40px;
+        width: 100%;
+        position: relative;
+    }
+
+    .carousel-container {
+        display: flex;
+        align-items: center;
+        padding-left: 60px;
+        gap: 15px;
+        transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+        will-change: transform;
+    }
+
+    .card {
+        width: var(--card-size);
+        height: var(--card-size);
+        background: rgba(0,0,0,0.3);
+        flex-shrink: 0;
+        position: relative;
+        transition: all var(--anim-speed) ease;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        overflow: visible;
+        cursor: pointer;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+
+    body.theme-hacker .card {
+        background: rgba(0,20,0,0.7);
+    }
+    body.theme-tokyo .card {
+        background: rgba(10,0,30,0.7);
+    }
+
+    .card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.8;
+        transition: opacity 0.2s;
+    }
+
+    
+    .card.system-card {
+        background: linear-gradient(135deg, #0b407a, #001f4d);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid rgba(255,255,255,0.1);
+    }
+    body.theme-hacker .card.system-card {
+        background: linear-gradient(135deg,#004400,#001400);
+        border: 1px solid rgba(0,255,136,0.3);
+    }
+    body.theme-tokyo .card.system-card {
+        background: linear-gradient(135deg,#ff007a, #3b00b3);
+        border: 1px solid rgba(255,74,255,0.3);
+    }
+    body.theme-red .card.system-card {
+        background: linear-gradient(135deg,#7a0000, #3a0000);
+        border: 1px solid rgba(255,77,77,0.3);
+    }
+
+    .card.system-card i { font-size: 3rem; color: white; opacity: 0.8; }
+    body.theme-hacker .card.system-card i,
+    body.theme-tokyo .card.system-card i,
+    body.theme-red .card.system-card i { 
+        color: inherit; 
+        opacity: 1;
+    }
+
+    
+    .card.active {
+        width: var(--card-selected);
+        height: var(--card-selected);
+        transform: translateY(10px);
+        background: rgba(255,255,255,0.1);
+        box-shadow: 0 0 0 4px white, 0 10px 20px rgba(0,0,0,0.5);
+        z-index: 10;
+    }
+
+    body.theme-hacker .card.active {
+        box-shadow: 0 0 0 4px #00ff88, 0 10px 20px rgba(0,0,0,0.8);
+    }
+    body.theme-tokyo .card.active {
+        box-shadow: 0 0 0 4px var(--ps-light-blue), 0 10px 20px rgba(0,0,0,0.8);
+    }
+
+    .card.active img { opacity: 1; }
+
+    
+    .card.dragging {
+        opacity: 0.5;
+        transform: translateY(10px) scale(0.9);
+    }
+    .card.drag-over {
+        
+        box-shadow: 0 0 0 4px var(--ps-light-blue), 0 10px 20px rgba(0,0,0,0.8) !important;
+        transform: translateY(10px) scale(1.1); 
+    }
+
+    
+    .info-area {
+        margin-top: 80px;
+        padding-left: 60px;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.3s ease;
+    }
+
+    .info-area.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    
+    .sub-content.hidden {
+        display: none !important;
+    }
+
+    .game-title {
+        font-size: 2.2rem;
+        font-weight: 300;
+        margin-bottom: 5px;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+    }
+
+    .game-meta {
+        display: flex;
+        gap: 15px;
+        font-size: 0.9rem;
+        color: rgba(255,255,255,0.8);
+        margin-bottom: 25px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    
+    .sub-content {
+        display: flex;
+        gap: 20px;
+        margin-top: 20px;
+    }
+
+    .sub-tile {
+        width: 300px;
+        height: 160px;
+        background: rgba(0,0,0,0.4);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 15px;
+        position: relative;
+        overflow: hidden;
+        border-radius: 4px;
+    }
+    .sub-tile img {
+        position: absolute; top:0; left:0; width:100%; height:100%; object-fit: cover; opacity: 0.5; z-index: 0;
+    }
+    .sub-tile div { z-index: 1; position: relative; text-shadow: 1px 1px 2px black; }
+    .sub-head { font-weight: bold; font-size: 1.1rem; }
+    .sub-desc { font-size: 0.8rem; color: #ccc; }
+
+    #favoriteTile {
+        cursor: pointer;
+    }
+
+    
+    .library-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(11, 23, 48, 0.98);
+        z-index: 1000;
+        display: none;
+        flex-direction: column;
+        padding: 40px 80px;
+        overflow-y: auto;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    body.theme-hacker .library-overlay {
+        background: rgba(0,0,0,0.96);
+    }
+    body.theme-tokyo .library-overlay {
+        background: rgba(5,0,25,0.96);
+    }
+    body.theme-red .library-overlay {
+        background: rgba(58,0,0,0.96);
+    }
+
+    .library-overlay.show { display: flex; opacity: 1; }
+
+    .lib-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        padding-bottom: 20px;
+    }
+    .lib-title { font-size: 2rem; font-weight: 300; }
+    .close-btn { 
+        background: none; border: 1px solid white; color: white; 
+        padding: 10px 20px; cursor: pointer; border-radius: 4px; font-size: 1rem;
+        transition: background 0.2s;
+    }
+    .close-btn:hover { background: white; color: black; }
+
+    
+    .lib-filters {
+        margin-bottom: 30px;
+    }
+
+    .lib-search {
+        width: 100%;
+        padding: 15px;
+        margin-bottom: 15px;
+        font-size: 1.2rem;
+        border: 2px solid rgba(255,255,255,0.5);
+        background: rgba(0,0,0,0.2);
+        color: white;
+        border-radius: 4px;
+        outline: none;
+        transition: border-color 0.2s;
+    }
+    .lib-search:focus {
+        border-color: var(--ps-light-blue);
+    }
+
+    .lib-categories {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .category-btn {
+        background: rgba(255,255,255,0.1);
+        border: 1px solid rgba(255,255,255,0.3);
+        color: white;
+        padding: 8px 16px;
+        cursor: pointer;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+
+    .category-btn.active {
+        background: var(--ps-light-blue); 
+        border-color: var(--ps-light-blue); 
+        font-weight: bold;
+    }
+    .category-btn:hover {
+        background: rgba(255,255,255,0.3);
+    }
+
+    
+
+    .lib-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 25px;
+    }
+
+    .lib-card {
+        aspect-ratio: 1/1;
+        background: #222;
+        border-radius: 4px;
+        position: relative;
+        cursor: pointer;
+        transition: transform 0.2s;
+        overflow: hidden;
+    }
+
+    /* Favorite button for library cards */
+    .lib-fav-btn {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        background: rgba(0,0,0,0.45);
+        border: 1px solid rgba(255,255,255,0.12);
+        color: white;
+        padding: 6px;
+        border-radius: 6px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 4;
+    }
+    .lib-fav-btn i { pointer-events: none; font-size: 0.9rem; }
+    .lib-fav-btn.favorited {
+        background: var(--ps-light-blue);
+        color: #000;
+        border-color: rgba(0,0,0,0.1);
+    }
+
+    @media (max-width: 600px) {
+        .lib-fav-btn { padding: 8px; top: 10px; right: 10px; }
+        .lib-fav-btn i { font-size: 1.05rem; }
+    }
+    body.theme-hacker .lib-card { background: #011; box-shadow: none; }
+    body.theme-tokyo .lib-card { background: #102; box-shadow: none; }
+    body.theme-red .lib-card { background: #200; box-shadow: none; } 
+
+    .lib-card:hover { transform: scale(1.05); box-shadow: 0 5px 15px rgba(0,0,0,0.5); z-index: 2;}
+    .lib-card img { width: 100%; height: 100%; object-fit: cover; }
+    .lib-card-title {
+        position: absolute; bottom: 0; left: 0; right: 0;
+        background: rgba(0,0,0,0.8); padding: 8px; font-size: 0.85rem;
+        text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+
+.game-modal {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: black !important;
+    z-index: 9999 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    border: none !important;
+    box-sizing: border-box !important;
+}
+
+.game-modal > div:first-child {
+    position: relative !important;
+    height: 40px !important;
+    flex-shrink: 0 !important;
+    z-index: 10000 !important;
+    background: #222 !important;
+    display: flex !important;
+    align-items: center !important;
+    padding: 0 20px !important;
+    justify-content: space-between !important;
+    color: white !important;
+    gap: 10px !important;
+}
+
+body.theme-hacker .game-modal > div:first-child { background: #000 !important; color: #00ff88 !important; }
+body.theme-tokyo .game-modal > div:first-child { background: #111 !important; color: #ff4aff !important; }
+body.theme-red .game-modal > div:first-child { background: #3a0000 !important; color: var(--ps-light-blue) !important; } 
+
+.game-modal > div:last-child {
+    position: relative !important;
+    flex: 1 !important;
+    width: 100% !important;
+    height: calc(100vh - 40px) !important;
+}
+
+.game-modal iframe {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    border: none !important;
+}
+
+.game-modal button,
+.game-modal .close-btn {
+    
+    background: rgba(255,255,255,0.2) !important;
+    border: 1px solid currentColor !important; 
+    color: currentColor !important; 
+    padding: 4px 12px !important;
+    border-radius: 4px !important;
+    cursor: pointer !important;
+    font-size: 0.85rem !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: inline-block !important;
+    z-index: 10001 !important;
+}
+
+.game-modal button:hover {
+    background: white !important;
+    color: black !important;
+}
+
+.game-modal .top-bar {
+    position: relative !important;
+    z-index: 10000 !important;
+    transition: opacity 0.2s ease !important;
+}
+
+.game-modal .show-bar-btn {
+    position: absolute !important;
+    top: 5px !important;
+    left: 5px !important;
+    z-index: 10001 !important;
+    width: 36px !important;
+    height: 36px !important;
+    padding: 0 !important;
+    border: 1px solid #666 !important;
+    background: rgba(0,0,0,0.9) !important;
+    color: white !important;
+    border-radius: 6px !important;
+    font-size: 1.2rem !important;
+    font-weight: bold !important;
+    cursor: pointer !important;
+    display: none !important;
+    line-height: 1 !important;
+}
+
+.game-modal > div:first-child[style*="display: none"] ~ div .show-bar-btn {
+    display: block !important;
+}
+
+
+.game-modal > div:first-child.hidden {
+    display: none !important;
+    opacity: 0 !important;
+    height: 0 !important;
+    padding: 0 !important;
+}
+.game-modal > div:first-child.hidden ~ div .show-bar-btn {
+    display: block !important;
+}
+.restore-bar-btn {
+    position: fixed;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-10px);
+    z-index: 10002;
+    background: rgba(0,0,0,0.7);
+    color: white;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 20px;
+    padding: 6px 12px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.45);
+    opacity: 0;
+    transition: transform 0.18s ease, opacity 0.18s ease;
+}
+.restore-bar-btn.visible {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+.restore-bar-btn:hover { transform: translateX(-50%) translateY(0) scale(1.03); }
+
+    
+    .other-tabs {
+        display:flex; gap:10px; margin-bottom:20px;
+        flex-wrap: wrap;
+    }
+
+    .tab-btn {
+        background: none;
+        border: 1px solid white;
+        color: white;
+        padding: 8px 16px;
+        cursor: pointer;
+        border-radius: 4px;
+        font-size: 0.9rem;
+        transition: background 0.2s, color 0.2s;
+    }
+
+    .tab-btn.active,
+    .tab-btn:hover {
+        background: white;
+        color: black;
+    }
+
+    
+    #bgUploadInput {
+        display:none;
+    }
+    
+    
+    .sound-control {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-top: 15px;
+    }
+    
+    .switch {
+        position: relative;
+        display: inline-block;
+        width: 60px;
+        height: 34px;
+    }
+    
+    .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+    
+    .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        transition: .4s;
+        border-radius: 34px;
+    }
+    
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: 26px;
+        width: 26px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        transition: .4s;
+        border-radius: 50%;
+    }
+    
+    input:checked + .slider {
+        background-color: var(--ps-light-blue); 
+    }
+    
+    input:focus + .slider {
+        box-shadow: 0 0 1px var(--ps-light-blue);
+    }
+    
+    input:checked + .slider:before {
+        transform: translateX(26px);
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 1200px) {
+        :root {
+            --card-size: 110px;
+            --card-selected: 160px;
+            --anim-speed: 0.22s;
+        }
+        .top-bar { padding: 22px 36px; font-size: 1.25rem; }
+        .carousel-container { padding-left: 36px; gap: 12px; }
+        .info-area { padding-left: 36px; }
+    }
+
+    @media (max-width: 900px) {
+        :root { --card-size: 100px; --card-selected: 150px; }
+        .top-bar { padding: 18px 24px; font-size: 1.15rem; }
+        .nav-hint { display: none; }
+        .carousel-container { padding-left: 24px; gap: 12px; }
+        .sub-content { gap: 12px; }
+        .sub-tile { height: 140px; width: 100%; }
+    }
+
+    @media (max-width: 600px) {
+        :root { --card-size: 84px; --card-selected: 130px; }
+        body { height: auto; overflow: auto; }
+        .top-bar { padding: 12px 16px; font-size: 1rem; gap:8px; flex-wrap: wrap; align-items: center; }
+        .site-title { font-size: 1.1rem; }
+        .site-title-group { flex: 1 1 auto; }
+        .clock-area { font-size: 1rem; }
+        .carousel-container { padding-left: 16px; gap: 10px; overflow-x: auto; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; }
+        .carousel-container .card { scroll-snap-align: center; }
+        .info-area { padding-left: 16px; margin-top: 18px; }
+        .sub-content { flex-direction: column; }
+        .sub-tile { width: 100%; height: 130px; }
+        .library-overlay { padding: 12px; }
+        .lib-grid { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 12px; }
+        .game-modal > div:first-child { height: 52px; padding: 8px 12px; }
+        .game-modal .close-btn { padding: 10px 12px; font-size: 1rem; }
+        .show-bar-btn { display: block !important; }
+        .restore-bar-btn { top: 12px; }
+
+        /* Make top-bar more compact and stack actions */
+        .top-bar { display: flex; flex-direction: row; align-items: center; }
+        .top-bar .site-title-group { order: 1; }
+        .top-bar .nav-hint { order: 3; display: none; }
+        .top-bar .clock-area { order: 2; }
+
+        /* Overlay header & grid behavior */
+        .library-overlay, .otherOverlay { padding: 12px; }
+        .library-overlay .lib-header, .otherOverlay .lib-header { position: sticky; top: 0; z-index: 5; background: rgba(11,23,48,0.98); padding-top: 8px; padding-bottom: 8px; }
+        .library-overlay .lib-grid { overflow-y: auto; max-height: calc(100vh - 220px); padding-bottom: 30px; }
+        .library-overlay .lib-filters { position: sticky; top: 56px; z-index: 4; background: transparent; padding-top: 10px; padding-bottom: 10px; }
+
+        .lib-search { width: 100%; }
+        .lib-categories { gap: 8px; }
+
+        .category-btn { padding: 10px 12px; font-size: 0.95rem; }
+        .lib-card { min-height: 110px; border-radius: 6px; }
+
+        /* Tabs & buttons should be touch-friendly */
+        .other-tabs { overflow-x: auto; padding-bottom: 8px; }
+        .tab-btn { padding: 10px 14px; border-radius: 8px; white-space: nowrap; }
+    }
+
+    @media (max-width: 420px) {
+        :root { --card-size: 74px; --card-selected: 110px; }
+        .top-bar .clock-area { display: none; }
+        .site-title img { height: 22px; }
+        .game-title { font-size: 1.4rem; }
+        .lib-grid { grid-template-columns: 1fr; }
+        .nav-hint { display: none; }
+
+        .close-btn { padding: 12px 14px; font-size: 1rem; }
+        .tab-btn { display: inline-block; font-size: 0.95rem; }
+        .library-overlay .lib-header, .otherOverlay .lib-header { padding-left: 10px; padding-right: 10px; }
+    }
+
+.lib-card.dragging {
+    opacity: 0.4;
+    transform: scale(0.95);
+}
+.lib-card.drag-over {
+    outline: 3px solid var(--ps-light-blue);
+}
+
+</style>
+</head>
+<body>
+    <div class="game-bg-overlay" id="gameBgOverlay"></div>
+
+    <div class="top-bar">
+        <div class="site-title-group">
+            <div class="site-title"><img src="https://cdn.jsdelivr.net/gh/dskjfoisjfsjio/alexrsworld@main/new%20logo.png" alt="Alexr's World Logo"> Alexr's World</div>
+        </div>
+        
+        <div class="nav-hint" id="navHint">Navigate with &larr;&rarr; Arrow Keys or Mouse</div>
+
+        <div class="clock-area">
+            <div class="social-icons">
+                <a href="https://www.youtube.com/@Alexr5153" target="_blank" title="YouTube" onclick="playSound('select')"><i class="fab fa-youtube"></i></a>
+                <a href="https://discord.gg/txKXSjaY7E" target="_blank" title="Discord" onclick="playSound('select')"><i class="fab fa-discord"></i></a>
+                <a href="https://www.tiktok.com/@alexrunblockedftw" target="_blank" title="TikTok" onclick="playSound('select')"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.instagram.com/alexrgamesunblocked/" target="_blank" title="Instagram" onclick="playSound('select')"><i class="fab fa-instagram"></i></a>
+            </div>
+            <span id="clock">12:00</span>
+        </div>
+    </div>
+
+    <div class="main-stage">
+        <div class="carousel-container" id="carousel"></div>
+    </div>
+
+    <div class="info-area visible" id="infoArea">
+        <div class="game-title" id="gameTitle">Game Title</div>
+        <div class="game-meta">
+            <span id="gameCat">Category</span>
+        </div>
+
+        <div class="sub-content">
+            <div class="sub-tile">
+                <img src="" id="bgPreview1" style="background:#222">
+                <div class="sub-head">Overview</div>
+                <div class="sub-desc" id="overviewDesc">Game Info</div>
+            </div>
+            <div class="sub-tile" id="favoriteTile" style="background: linear-gradient(135deg, #00439c, #00285e); align-items: center; justify-content: center;">
+                <div id="favoriteLabel" style="font-size: 1.5rem; font-weight: bold;">Favorite this game</div>
+                <div class="sub-desc" id="favoriteStatus">Click to add to favorites</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="library-overlay" id="libraryOverlay">
+        <div class="lib-header">
+            <div class="lib-title" id="libraryTitle">Your Collection</div>
+            <button class="close-btn" onclick="closeOverlay()">Close</button>
+        </div>
+        
+        <div class="lib-filters">
+            <input type="text" id="libSearchInput" class="lib-search" placeholder="Search games by title..." oninput="renderOverlayGrid()" list="game-suggestions">
+            <datalist id="game-suggestions"></datalist>
+            <div class="lib-categories" id="libCategories">
+                </div>
+        </div>
+        <div class="lib-grid" id="libraryGrid"></div>
+    </div>
+
+    <div class="library-overlay" id="otherOverlay">
+        <div class="lib-header">
+            <div class="lib-title">Settings</div>
+            <button class="close-btn" onclick="toggleOther(false)">Close</button>
+        </div>
+
+        <div class="other-tabs">
+            <button class="tab-btn" id="tab_changelog" onclick="showOtherTab('changelog')">Changelog</button>
+            <button class="tab-btn" id="tab_proxy" onclick="showOtherTab('proxy')">Proxy</button>
+            <button class="tab-btn" id="tab_themes" onclick="showOtherTab('themes')">Themes</button>
+            <button class="tab-btn" id="tab_sounds" onclick="showOtherTab('sounds')">Sounds</button>
+            <button class="tab-btn" id="tab_cloak" onclick="showOtherTab('cloak')">Tab Cloak</button>
+            <button class="tab-btn" id="tab_credits" onclick="showOtherTab('credits')">Credits</button>
+        </div>
+
+        <div id="other_changelog">
+          <p>12-14-25 Beta V1: Beta release</p>
+          <p>12-15-25 Beta V2: Bug Fixes and implemented pokemon games and more!</p>
+          <p>12-17-25: Beta V3: More bug fixes and implement FNAF 4 Halloween and Ultimate Custom Night</p>
+          <p>12-18-25: V1.0: RELEASE! You can now drag and drop cards on menu. Added Donkey Kong Country 1-3.</p>
+        </div>
+
+        <div id="other_proxy" style="display:none;">
+            <p>Coming soon!</p>
+        </div>
+
+        <div id="other_themes" style="display:none;">
+            <p>Select a theme:</p>
+            <button class="close-btn" onclick="setTheme('default')">Default</button>
+            <button class="close-btn" onclick="setTheme('dark')">Dark</button>
+            <button class="close-btn" onclick="setTheme('red')">Red</button>
+            <button class="close-btn" onclick="setTheme('blue-dark')">Blue Dark</button>
+            <button class="close-btn" onclick="setTheme('hacker')">Hacker</button>
+            <button class="close-btn" onclick="setTheme('tokyo')">Tokyo</button>
+
+            <hr style="margin:20px 0; border-color:rgba(255,255,255,0.1);">
+            <p>PS5-Style Game Backgrounds:</p>
+            <button class="close-btn" id="ps5BgToggle" onclick="togglePS5Backgrounds()">Enable PS5 Backgrounds</button>
+            <p style="font-size:0.85rem; color:#aaa; margin-top:8px;">Show selected game image as blurred background</p>
+
+            <hr style="margin:20px 0; border-color:rgba(255,255,255,0.1);">
+            <p>Custom background image:</p>
+            <label class="close-btn" for="bgUploadInput">Upload Background</label>
+            <input type="file" id="bgUploadInput" accept="image/*">
+            <button class="close-btn" onclick="clearCustomBackground()">Clear Custom Background</button>
+        </div>
+        
+        
+        <div id="other_cloak" style="display:none;">
+            <p>Tab Cloaking:</p>
+
+            <p style="font-size:0.9rem; color:#aaa;">
+                Change the tab title and favicon to disguise this site.
+            </p>
+
+            <div style="margin-top:15px;">
+                <button class="close-btn" onclick="applyCloakPreset('Google Docs','https://ssl.gstatic.com/docs/documents/images/kix-favicon7.ico')">Google Docs</button>
+                <button class="close-btn" onclick="applyCloakPreset('Google Classroom','https://www.gstatic.com/classroom/logo_square_rounded.svg')">Google Classroom</button>
+                <button class="close-btn" onclick="applyCloakPreset('Clever | Portal','https://raw.githubusercontent.com/dskjfoisjfsjio/Standalone-games/main/assets/clever.jpg')">Clever</button>
+            </div>
+
+            <hr style="margin:20px 0; border-color:rgba(255,255,255,0.1);">
+
+            <p>Custom Cloak:</p>
+            <input id="cloakTitleInput" placeholder="Tab Title" style="width:100%; padding:10px; margin-bottom:10px;">
+            <input id="cloakIconInput" placeholder="Favicon URL" style="width:100%; padding:10px; margin-bottom:10px;">
+
+            <button class="close-btn" onclick="applyCustomCloak()">Apply Custom Cloak</button>
+            <button class="close-btn" onclick="resetCloak()">Reset Cloak</button>
+        </div>
+
+        <div id="other_sounds" style="display:none;">
+            <p>Toggle Sound Effects and Ambience:</p>
+            <div class="sound-control">
+                <label for="soundToggle">Enable Sounds</label>
+                <label class="switch">
+                    <input type="checkbox" id="soundToggle" onchange="toggleSoundEffects(this.checked)">
+                    <span class="slider"></span>
+                </label>
+            </div>
+            
+            <p style="font-size:0.85rem; color:#aaa; margin-top:15px;">
+                Sound effects include card hovers, selection, and a menu background track.
+            </p>
+            
+            <hr style="margin:20px 0; border-color:rgba(255,255,255,0.1);">
+            <p>Ambience Volume:</p>
+            <input type="range" id="ambienceVolume" min="0" max="1" step="0.1" value="0.5" oninput="setAmbienceVolume(this.value)" style="width: 100%; margin-top: 10px;">
+        </div>
+
+        <div id="other_credits" style="display:none;">
+            <h3>Credits</h3>
+            <p>Alexr - UI, UX and games.</p>
+            <p>Michiganontop - Sounds</p>
+            <p>Carteryes - Unity ports</p>
+            <p>Thank you!</p>
+        </div>
+    </div>
+
+    <script>
+
+let draggedLibTitle = null;
+
+        const carousel = document.getElementById('carousel');
+        const infoArea = document.getElementById('infoArea');
+        const libOverlay = document.getElementById('libraryOverlay');
+        const libGrid = document.getElementById('libraryGrid');
+        const libraryTitle = document.getElementById('libraryTitle');
+        const otherOverlay = document.getElementById('otherOverlay');
+        const libSearchInput = document.getElementById('libSearchInput');
+        const libCategoriesDiv = document.getElementById('libCategories');
+        const gameSuggestionsDatalist = document.getElementById('game-suggestions');
+        const subContent = document.querySelector('.sub-content'); 
+
+        // Play select sound when interacting with the library/favorites search input
+        if (libSearchInput) {
+            // Use focus and Enter; avoid click to prevent double-trigger (focus + click) on some browsers
+            libSearchInput.addEventListener('focus', () => playSound('select'));
+            libSearchInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    playSound('select');
+                    renderOverlayGrid();
+                }
+            });
+        }
+
+        let allGamesData = []; 
+        let displayList = [];
+        let selectedIndex = 0;
+        let isLibraryOpen = false;
+        let isOtherOpen = false;
+        let currentOverlayMode = 'library';
+        let favoritesSet = new Set();
+        let currentCategoryFilter = 'All';
+        let areSoundsEnabled = false;
+
+        
+        const settingsItem = {
+            title: "Settings",
+            category: "Changelog, Themes & more!",
+            description: "Customize themes and manage backgrounds.",
+            systemType: "settings",
+            icon: "fa-cog"
+        };
+
+        const favoritesItem = {
+            title: "Favorites",
+            category: "Your Favorite titles",
+            description: "Your favorite titles.",
+            systemType: "favorites",
+            icon: "fa-heart"
+        };
+        
+        
+        const suggestItem = {
+            title: "Suggest a Title",
+            category: "Suggest a title",
+            description: "Suggest a game via Google Form.",
+            systemType: "suggest",
+            icon: "fa-lightbulb",
+            path: "https://docs.google.com/forms/d/e/1FAIpQLSeOUOd7fAVrAdD4u3IWdyAVCnkcvGkgkVIf-pd0bhOBGcrC1g/viewform?usp=sf_link" // Placeholder URL
+        };
+        
+        const reportItem = {
+            title: "Report Bugs",
+            category: "Report a bug",
+            description: "Report a bug via Google Form.",
+            systemType: "report",
+            icon: "fa-bug",
+            path: "https://docs.google.com/forms/d/e/1FAIpQLSerfTd9MM5NwszaG1CNMSZjNoNtF4VF51_twn18E-XW6MDLew/viewform?usp=sf_link" // Placeholder URL
+        };
+
+        const libraryItem = {
+            title: "Library",
+            category: "Collection",
+            description: "View all games in your collection.",
+            systemType: "library",
+            icon: "fa-th"
+        };
+
+
+
+        
+        
+        const ambience = new Audio('https://cdn.jsdelivr.net/gh/dskjfoisjfsjio/alexrsworld@main/sounds/ambience.mp3');
+        ambience.loop = true;
+        ambience.volume = localStorage.getItem('alexrGames_ambience_volume') || 0.5;
+
+        const soundEffects = {
+            click: new Audio('https://cdn.jsdelivr.net/gh/dskjfoisjfsjio/alexrsworld@main/sounds/close.mp3'),
+            hover: new Audio('https://cdn.jsdelivr.net/gh/dskjfoisjfsjio/alexrsworld@main/sounds/hover.mp3'),
+            select: new Audio('https://cdn.jsdelivr.net/gh/dskjfoisjfsjio/alexrsworld@main/sounds/select.mp3'),
+        };
+        
+        // Per-sound cooldowns (ms) to avoid duplicates while allowing frequent hover sounds
+        const _soundCooldowns = { hover: 80, select: 220, click: 220 };
+        const _lastSoundPlay = {};
+
+        function loadSoundSettings() {
+            const saved = localStorage.getItem('alexrGames_sounds_enabled') === 'true';
+            areSoundsEnabled = saved;
+            
+            const toggle = document.getElementById('soundToggle');
+            if (toggle) toggle.checked = saved;
+            
+            const volumeInput = document.getElementById('ambienceVolume');
+            if (volumeInput) volumeInput.value = ambience.volume;
+
+            if (saved && !document.querySelector('.game-modal')) {
+                playAmbience();
+            }
+        }
+        
+        function toggleSoundEffects(enabled) {
+            areSoundsEnabled = enabled;
+            localStorage.setItem('alexrGames_sounds_enabled', enabled);
+            if (enabled) {
+                playAmbience();
+            } else {
+                pauseAmbience();
+            }
+        }
+        
+        function setAmbienceVolume(volume) {
+            ambience.volume = volume;
+            localStorage.setItem('alexrGames_ambience_volume', volume);
+        }
+
+        function playSound(name) {
+            if (!areSoundsEnabled) return;
+            const now = Date.now();
+            const cooldown = (_soundCooldowns && _soundCooldowns[name] != null) ? _soundCooldowns[name] : 200;
+            const last = _lastSoundPlay[name] || 0;
+            if (now - last < cooldown) return;
+            _lastSoundPlay[name] = now;
+
+            const audio = soundEffects[name];
+            if (audio) {
+                audio.currentTime = 0;
+                audio.play().catch(e => console.warn("Audio playback failed:", e));
+            }
+        }
+        
+        function playAmbience() {
+            if (areSoundsEnabled) {
+                
+                if (!document.querySelector('.game-modal') && !isLibraryOpen && !isOtherOpen) {
+                    ambience.play().catch(e => console.warn("Ambience playback failed:", e));
+                }
+            }
+        }
+        
+        function pauseAmbience() {
+            ambience.pause();
+        }
+        
+
+        
+
+        function togglePS5Backgrounds() {
+            const isEnabled = document.body.classList.toggle('ps5-bg-enabled');
+            localStorage.setItem('alexrGames_ps5bg', isEnabled ? 'true' : 'false');
+            const btn = document.getElementById('ps5BgToggle');
+            if (btn) {
+                btn.textContent = isEnabled ? 'Disable PS5 Backgrounds' : 'Enable PS5 Backgrounds';
+            }
+            if (!isEnabled) {
+                const overlay = document.getElementById('gameBgOverlay');
+                if (overlay) overlay.classList.remove('active');
+            } else {
+                updateGameBackground(displayList[selectedIndex]);
+            }
+        }
+
+        function loadPS5BackgroundSetting() {
+            const saved = localStorage.getItem('alexrGames_ps5bg');
+            const isEnabled = saved === 'true';
+            if (isEnabled) {
+                document.body.classList.add('ps5-bg-enabled');
+            }
+            const btn = document.getElementById('ps5BgToggle');
+            if (btn) {
+                btn.textContent = isEnabled ? 'Disable PS5 Backgrounds' : 'Enable PS5 Backgrounds';
+            }
+        }
+
+        function updateGameBackground(game) {
+            const overlay = document.getElementById('gameBgOverlay');
+            if (!overlay) return;
+            
+            const isEnabled = document.body.classList.contains('ps5-bg-enabled');
+            
+            if (!isEnabled || !game || game.systemType || !game.img) {
+                overlay.classList.remove('active');
+                return;
+            }
+            
+            overlay.style.backgroundImage = `url(${game.img})`;
+            overlay.classList.add('active');
+        }
+
+        function applyTheme(themeName) {
+            document.body.classList.remove('theme-default','theme-dark','theme-red','theme-blue-dark','theme-hacker','theme-tokyo');
+            document.body.classList.add('theme-' + themeName);
+        }
+
+        function setTheme(themeName) {
+            applyTheme(themeName);
+            localStorage.setItem('alexrGames_theme', themeName);
+            try { updateFavoriteTile(displayList[selectedIndex]); } catch(e) {}
+        }
+
+        function loadTheme() {
+            const savedTheme = localStorage.getItem('alexrGames_theme') || 'default';
+            applyTheme(savedTheme);
+            const bg = localStorage.getItem('alexrGames_bg');
+            if (bg) {
+                document.body.style.backgroundImage = `url(${bg})`;
+                document.body.classList.add('has-custom-bg');
+            }
+        }
+
+        function clearCustomBackground() {
+            localStorage.removeItem('alexrGames_bg');
+            document.body.classList.remove('has-custom-bg');
+            document.body.style.backgroundImage = '';
+            const savedTheme = localStorage.getItem('alexrGames_theme') || 'default';
+            applyTheme(savedTheme);
+        }
+
+        const bgUploadInput = document.getElementById('bgUploadInput');
+        if (bgUploadInput) {
+            bgUploadInput.addEventListener('change', function() {
+                const file = this.files[0];
+                if (!file) return;
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const dataURL = e.target.result;
+                    document.body.style.backgroundImage = `url(${dataURL})`;
+                    document.body.classList.add('has-custom-bg');
+                    localStorage.setItem('alexrGames_bg', dataURL);
+                };
+                reader.readAsDataURL(file);
+            });
+        }
+
+        
+        function loadFavorites() {
+            const saved = localStorage.getItem('alexrGames_favorites');
+            if (saved) {
+                try {
+                    const arr = JSON.parse(saved);
+                    favoritesSet = new Set(arr);
+                } catch (e) {
+                    favoritesSet = new Set();
+                }
+            }
+        }
+
+        function saveFavorites() {
+            
+            localStorage.setItem('alexrGames_favorites', JSON.stringify(Array.from(favoritesSet)));
+        }
+        
+        
+       async function loadGames() {
+    loadFavorites(); 
+
+    localStorage.removeItem('alexrGames_allGamesData');
+    
+    try {
+        const response = await fetch('https://raw.githubusercontent.com/dskjfoisjfsjio/alexrsworld/main/singlefilegames.json');
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        
+        allGamesData = Array.isArray(data) ? data : data.allGamesData || [];
+
+        allGamesData.sort((a, b) => {
+            return a.title.localeCompare(b.title, undefined, {
+                numeric: true,
+                sensitivity: 'base'
+            });
+        });
+
+        if (allGamesData.length === 0) {
+            console.warn('games.json was empty or incorrectly formatted.');
+        }
+
+        try {
+            const savedCustom = JSON.parse(localStorage.getItem('alexrGames_customOrder') || '[]');
+            if (Array.isArray(savedCustom) && savedCustom.length) {
+                const map = new Map(allGamesData.map(g => [g.title, g]));
+                const reordered = [];
+                savedCustom.forEach(title => {
+                    if (map.has(title)) {
+                        reordered.push(map.get(title));
+                        map.delete(title);
+                    }
+                });
+                for (const g of allGamesData) {
+                    if (map.has(g.title)) reordered.push(g);
+                }
+                allGamesData = reordered;
+            } else {
+                const savedRecent = JSON.parse(localStorage.getItem('alexrGames_recent') || '[]');
+                if (Array.isArray(savedRecent) && savedRecent.length) {
+                    const map = new Map(allGamesData.map(g => [g.title, g]));
+                    const reordered = [];
+                    savedRecent.forEach(title => {
+                        if (map.has(title)) {
+                            reordered.push(map.get(title));
+                            map.delete(title);
+                        }
+                    });
+                    for (const g of allGamesData) {
+                        if (map.has(g.title)) reordered.push(g);
+                    }
+                    allGamesData = reordered;
+                }
+            }
+        } catch (e) {
+            console.warn('Failed to apply saved ordering:', e);
+        }
+
+    } catch(e) {
+        console.error("Failed to fetch games.json. Please ensure the file exists and is valid JSON.", e);
+        allGamesData = []; 
+    }
+
+    buildLists();
+}
+        function buildLists() {
+            const firstSix = allGamesData.slice(0, 6);
+            
+            
+            displayList = [suggestItem, reportItem, favoritesItem, settingsItem, ...firstSix, libraryItem];
+            
+            initCarousel();
+            initLibraryGrid();
+        }
+
+        
+
+        
+        function saveGameOrder() {
+            try {
+                const titles = (allGamesData || []).map(g => g.title).filter(Boolean);
+                localStorage.setItem('alexrGames_customOrder', JSON.stringify(titles));
+            } catch (e) {
+                console.warn('saveGameOrder failed:', e);
+            }
+        }
+
+        function promoteToRecent(game) {
+            try {
+                const title = game && game.title;
+                if (!title) return;
+
+                allGamesData = allGamesData.filter(g => g.title !== title);
+                allGamesData.unshift(game);
+
+                const saved = JSON.parse(localStorage.getItem('alexrGames_recent') || '[]');
+                const filtered = (Array.isArray(saved) ? saved.filter(t => t !== title) : []);
+                filtered.unshift(title);
+                const maxRecent = 12;
+                const trimmed = filtered.slice(0, maxRecent);
+                localStorage.setItem('alexrGames_recent', JSON.stringify(trimmed));
+
+                try { saveGameOrder(); } catch (se) { console.warn('Failed to save custom order on promoteToRecent:', se); }
+
+            } catch (e) {
+                console.warn('promoteToRecent failed to persist recent:', e);
+            }
+
+            buildLists();
+            
+            updateSelection(4);
+        }
+
+        function initCarousel() {
+            carousel.innerHTML = '';
+
+            
+            document.querySelectorAll('.drag-over').forEach(el => el.classList.remove('drag-over'));
+            
+            displayList.forEach((game, index) => {
+                const card = document.createElement('div');
+                card.className = `card ${game.systemType ? 'system-card' : ''}`;
+                card.dataset.index = index;
+                
+                
+                
+                const isGameCard = index >= 4 && index < displayList.length - 1;
+                
+                card.draggable = isGameCard ? 'true' : 'false'; 
+                
+                if (isGameCard) {
+                    
+                    card.addEventListener('dragstart', (e) => {
+                        playSound('hover'); 
+                        card.classList.add('dragging');
+                        
+                        e.dataTransfer.setData('text/plain', index.toString());
+                        
+                        e.dataTransfer.effectAllowed = 'move'; 
+                    });
+                    
+                    
+                    card.addEventListener('dragover', (e) => {
+                        
+                        e.preventDefault(); 
+                        const draggedIdx = parseInt(e.dataTransfer.getData('text/plain'));
+                        
+                        if (index !== draggedIdx && isGameCard) {
+                            card.classList.add('drag-over');
+                            e.dataTransfer.dropEffect = 'move';
+                        }
+                    });
+                    
+                    
+                    card.addEventListener('dragleave', () => {
+                        card.classList.remove('drag-over');
+                    });
+                    
+                    
+                    card.addEventListener('drop', (e) => {
+                        e.preventDefault();
+                        card.classList.remove('drag-over');
+                        playSound('select'); 
+
+                        const draggedListIndex = parseInt(e.dataTransfer.getData('text/plain'));
+                        const targetListIndex = index;
+                        
+                        
+                        if (draggedListIndex < 4 || targetListIndex < 4 || 
+                            draggedListIndex >= displayList.length - 1 || targetListIndex >= displayList.length - 1 || 
+                            draggedListIndex === targetListIndex) {
+                            return; 
+                        }
+                        
+                        
+                        const oldGameIndex = draggedListIndex - 4;
+                        const newGameIndex = targetListIndex - 4;
+
+                        
+                        const [movedGame] = allGamesData.splice(oldGameIndex, 1);
+                        allGamesData.splice(newGameIndex, 0, movedGame);
+                        
+                        
+                        buildLists(); 
+                        updateSelection(targetListIndex); 
+                        try { saveGameOrder(); } catch (e) { console.warn('Failed to save game order after drag:', e); }
+                    });
+                    
+                    
+                    card.addEventListener('dragend', () => {
+                        card.classList.remove('dragging');
+                        
+                        document.querySelectorAll('.drag-over').forEach(el => el.classList.remove('drag-over'));
+                    });
+                }
+                
+                
+                if (game.systemType) {
+                    
+                    
+                    card.innerHTML = `<i class="fas ${game.icon}"></i>`;
+                    card.style.justifyContent = 'center';
+                    card.style.alignItems = 'center';
+                } else {
+                    const img = document.createElement('img');
+                    img.src = game.img || '';
+                    img.onerror = function() { this.style.display='none'; card.style.background='#333'; };
+                    card.appendChild(img);
+                }
+                
+                
+                card.addEventListener('click', () => {
+                    if(selectedIndex === index) {
+                        activateItem(index); 
+                    } else {
+                        playSound('hover'); 
+                        updateSelection(index);
+                    }
+                });
+
+                carousel.appendChild(card);
+            });
+
+            
+            updateSelection(displayList.findIndex(g => !g.systemType) || 0); 
+        }
+
+        function getUniqueCategories(gamesList) {
+            const source = Array.isArray(gamesList) ? gamesList : allGamesData;
+            const categories = source.map(game => game.category).filter(Boolean);
+            return ['All', ...new Set(categories)];
+        }
+        
+        function renderSearchSuggestions() {
+            gameSuggestionsDatalist.innerHTML = '';
+            const sourceList = (currentOverlayMode === 'favorites') ? allGamesData.filter(g => favoritesSet.has(g.title)) : allGamesData;
+            sourceList.forEach(game => {
+                const option = document.createElement('option');
+                option.value = game.title;
+                gameSuggestionsDatalist.appendChild(option);
+            });
+        }
+
+        function renderCategoryButtons() {
+            libCategoriesDiv.innerHTML = '';
+
+            const sourceList = (currentOverlayMode === 'favorites') ? allGamesData.filter(g => favoritesSet.has(g.title)) : allGamesData;
+            const categories = getUniqueCategories(sourceList);
+
+            if (!categories.includes(currentCategoryFilter)) {
+                currentCategoryFilter = 'All';
+            }
+
+            categories.forEach(category => {
+                const button = document.createElement('button');
+                button.className = 'category-btn';
+                button.textContent = category;
+                button.dataset.category = category;
+
+                if (category === currentCategoryFilter) {
+                    button.classList.add('active');
+                }
+
+                button.onclick = () => {
+                    playSound('select');
+                    currentCategoryFilter = category;
+                    renderCategoryButtons();
+                    renderOverlayGrid();
+                }; 
+
+                libCategoriesDiv.appendChild(button);
+            });
+        }
+
+        function initLibraryGrid() {
+            renderSearchSuggestions();
+            renderCategoryButtons();
+            renderOverlayGrid();
+        }
+
+     function renderOverlayGrid() {
+    libGrid.innerHTML = '';
+    let gamesToShow = [];
+
+    if (currentOverlayMode === 'library') {
+        libraryTitle.textContent = 'All Games';
+        gamesToShow = allGamesData;
+        
+        const searchTerm = libSearchInput.value.toLowerCase().trim();
+        
+        gamesToShow = gamesToShow.filter(game => {
+            const matchesSearch = !searchTerm || game.title.toLowerCase().includes(searchTerm);
+            const matchesCategory = currentCategoryFilter === 'All' || game.category === currentCategoryFilter;
+            return matchesSearch && matchesCategory;
+        });
+
+    } else {
+        libraryTitle.textContent = 'Your Favorites';
+        gamesToShow = allGamesData.filter(g => favoritesSet.has(g.title));
+
+        const searchTerm = libSearchInput.value.toLowerCase().trim();
+        gamesToShow = gamesToShow.filter(game => {
+            const matchesSearch = !searchTerm || game.title.toLowerCase().includes(searchTerm);
+            const matchesCategory = currentCategoryFilter === 'All' || game.category === currentCategoryFilter;
+            return matchesSearch && matchesCategory;
+        });
+    }
+
+    gamesToShow.forEach((game) => {
+        const card = document.createElement('div');
+        card.draggable = true;
+
+        card.addEventListener('dragstart', () => {
+            draggedLibTitle = game.title;
+            card.classList.add('dragging');
+            playSound('hover');
+        });
+
+        card.addEventListener('dragend', () => {
+            draggedLibTitle = null;
+            card.classList.remove('dragging');
+            document.querySelectorAll('.lib-card').forEach(c => c.classList.remove('drag-over'));
+        });
+
+        card.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            card.classList.add('drag-over');
+        });
+
+        card.addEventListener('dragleave', () => {
+            card.classList.remove('drag-over');
+        });
+
+        card.addEventListener('drop', (e) => {
+            e.preventDefault();
+            card.classList.remove('drag-over');
+
+            if (!draggedLibTitle || draggedLibTitle === game.title) return;
+
+            const fromIndex = allGamesData.findIndex(g => g.title === draggedLibTitle);
+            const toIndex = allGamesData.findIndex(g => g.title === game.title);
+
+            if (fromIndex === -1 || toIndex === -1) return;
+
+            const [moved] = allGamesData.splice(fromIndex, 1);
+            allGamesData.splice(toIndex, 0, moved);
+
+            playSound('select');
+            saveGameOrder();
+            renderOverlayGrid();
+        });
+
+        card.className = 'lib-card';
+        card.innerHTML = `
+            <img src="${game.img || ''}" onerror="this.style.display='none'">
+            <button class="lib-fav-btn" aria-label="${favoritesSet.has(game.title) ? 'Unfavorite' : 'Favorite'}">
+                <i class="${favoritesSet.has(game.title) ? 'fas' : 'far'} fa-heart"></i>
+            </button>
+            <div class="lib-card-title">${game.title}</div>
+        `;
+
+        const favBtn = card.querySelector('.lib-fav-btn');
+        if (favBtn) {
+            if (favoritesSet.has(game.title)) favBtn.classList.add('favorited');
+            favBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (favoritesSet.has(game.title)) {
+                    favoritesSet.delete(game.title);
+                    favBtn.classList.remove('favorited');
+                    const icon = favBtn.querySelector('i'); if (icon) icon.className = 'far fa-heart';
+                    favBtn.setAttribute('aria-label','Favorite');
+                } else {
+                    favoritesSet.add(game.title);
+                    favBtn.classList.add('favorited');
+                    const icon = favBtn.querySelector('i'); if (icon) icon.className = 'fas fa-heart';
+                    favBtn.setAttribute('aria-label','Unfavorite');
+                }
+                saveFavorites();
+                playSound('select');
+
+                if (currentOverlayMode === 'favorites') renderOverlayGrid();
+                try { updateFavoriteTile(displayList[selectedIndex]); } catch(e) {}
+            });
+        }
+
+        card.onclick = () => {
+            playSound('select');
+            toggleOverlay(false);
+            launchGame(game);
+        };
+        libGrid.appendChild(card);
+    });
+}
+
+        function updateSelection(index) {
+            if(isLibraryOpen || isOtherOpen || document.querySelector('.game-modal')) return;
+            if(index < 0) index = 0;
+            if(index >= displayList.length) index = displayList.length - 1;
+            
+            selectedIndex = index;
+
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(c => c.classList.remove('active'));
+            if (cards[index]) cards[index].classList.add('active');
+
+            const computedGap = parseFloat(getComputedStyle(carousel).gap || getComputedStyle(carousel).columnGap || 15);
+            let activeCardPosition = 0;
+            for (let i = 0; i < index; i++) {
+                activeCardPosition += (cards[i] ? cards[i].offsetWidth : 0) + computedGap;
+            }
+
+            const visibleBefore = 2;
+            const activeWidth = cards[index] ? cards[index].offsetWidth : (parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--card-size')) || 130);
+
+            let offset = activeCardPosition - (visibleBefore * (activeWidth + computedGap));
+            offset = Math.max(0, offset);
+
+            carousel.style.transform = `translateX(-${offset}px)`;
+
+            const g = displayList[index];
+            document.getElementById('gameTitle').innerText = g.title || '';
+            document.getElementById('gameCat').innerText = g.category || 'Game';
+            document.getElementById('overviewDesc').innerText = g.description || 'Game Info';
+
+            const bg1 = document.getElementById('bgPreview1');
+            
+            if(g.img) {
+                bg1.src = g.img;
+                bg1.style.filter = "grayscale(100%) blur(2px)";
+            } else {
+                bg1.src = "";
+            }
+
+            
+            if (g.systemType) {
+                subContent.classList.add('hidden');
+                document.getElementById('gameTitle').innerText = g.title;
+                document.getElementById('gameCat').innerText = g.category;
+            } else {
+                subContent.classList.remove('hidden');
+            }
+
+            updateFavoriteTile(g);
+            updateGameBackground(g); 
+
+            infoArea.classList.remove('visible');
+            setTimeout(() => infoArea.classList.add('visible'), 50);
+        }
+
+        function activateItem(index) {
+            if (document.querySelector('.game-modal')) return;
+            playSound('select');
+            const item = displayList[index];
+
+            if (item.systemType === 'library') {
+                currentOverlayMode = 'library';
+                currentCategoryFilter = 'All';
+                libSearchInput.value = '';
+                renderCategoryButtons();
+                renderOverlayGrid();
+                toggleOverlay(true);
+            } else if (item.systemType === 'favorites') {
+                currentOverlayMode = 'favorites';
+                currentCategoryFilter = 'All';
+                libSearchInput.value = '';
+                renderSearchSuggestions();
+                renderCategoryButtons();
+                renderOverlayGrid();
+                toggleOverlay(true);
+            } else if (item.systemType === 'settings') {
+                showOtherTab('sounds');
+                toggleOther(true);
+            } else if (item.systemType === 'suggest' || item.systemType === 'report') {
+                 window.open(item.path, '_blank');
+            } else {
+                launchGame(item);
+            }
+        }
+
+        function toggleOverlay(show) {
+            isLibraryOpen = show;
+            if(show) {
+                libOverlay.classList.add('show');
+                libOverlay.style.opacity = '0';
+                setTimeout(()=>libOverlay.style.opacity='1', 10);
+                try { document.body.style.overflow = 'hidden'; } catch(e) {}
+                try { libOverlay.setAttribute('role','dialog'); libOverlay.setAttribute('aria-hidden','false'); } catch(e) {}
+                setTimeout(() => { try { libOverlay.querySelector('.close-btn').focus(); } catch (e) {} }, 80);
+            } else {
+                libOverlay.style.opacity = '0';
+                setTimeout(()=>{ libOverlay.classList.remove('show'); try { libOverlay.setAttribute('aria-hidden','true'); } catch(e) {}} , 300);
+                try { document.body.style.overflow = ''; } catch(e) {}
+                
+                if (!isOtherOpen && !document.querySelector('.game-modal')) {
+                    playAmbience();
+                }
+            }
+        }
+        
+        function closeOverlay() {
+            playSound('click');
+            toggleOverlay(false);
+        }
+
+        function toggleOther(show) {
+            isOtherOpen = show;
+            if (show) {
+                otherOverlay.classList.add('show');
+                otherOverlay.style.opacity = '0';
+                setTimeout(() => otherOverlay.style.opacity = '1', 10);
+                try { document.body.style.overflow = 'hidden'; } catch(e) {}
+                try { otherOverlay.setAttribute('role','dialog'); otherOverlay.setAttribute('aria-hidden','false'); } catch(e) {}
+                setTimeout(() => { try { otherOverlay.querySelector('.close-btn').focus(); } catch (e) {} }, 80);
+            } else {
+                playSound('click');
+                otherOverlay.style.opacity = '0';
+                setTimeout(() => { otherOverlay.classList.remove('show'); try { otherOverlay.setAttribute('aria-hidden','true'); } catch(e) {} }, 300);
+                try { document.body.style.overflow = ''; } catch(e) {}
+                
+                if (!isLibraryOpen && !isOtherOpen) {
+                    playAmbience();
+                }
+            }
+        }
+
+        function showOtherTab(tab) {
+            playSound('select');
+            const tabs = ['changelog','proxy','themes','sounds','cloak','credits'];
+            tabs.forEach(t => {
+                const el = document.getElementById('other_' + t);
+                if (el) el.style.display = (t === tab) ? 'block' : 'none';
+                const btn = document.getElementById('tab_' + t);
+                if (btn) {
+                    if (t === tab) btn.classList.add('active');
+                    else btn.classList.remove('active');
+                }
+            });
+        }
+function launchGame(game) {
+    pauseAmbience(); 
+
+    const modal = document.createElement('div');
+    modal.className = 'game-modal'; 
+
+    const bar = document.createElement('div');
+    Object.assign(bar.style, {
+        height: '40px', background: '#222', display: 'flex', 
+        alignItems: 'center', padding: '0 20px',
+        justifyContent: 'space-between', color:'white', gap:'10px'
+    });
+
+    const currentBodyTheme = document.body.className.match(/theme-(\w+)/)?.[1] || 'default';
+    if (currentBodyTheme === 'hacker') {
+        Object.assign(bar.style, { background: '#000', color: '#00ff88' });
+    } else if (currentBodyTheme === 'tokyo') {
+        Object.assign(bar.style, { background: '#111', color: '#ff4aff' });
+    } else if (currentBodyTheme === 'red') {
+        const redAccent = getComputedStyle(document.body).getPropertyValue('--ps-light-blue');
+        Object.assign(bar.style, { background: '#3a0000', color: redAccent });
+    }
+
+    const leftSpan = document.createElement('span');
+    leftSpan.textContent = game.title;
+
+    const controls = document.createElement('div');
+    controls.style.display = 'flex';
+    controls.style.gap = '8px';
+
+    const openAboutBlank = () => {
+        const w = window.open('about:blank', '_blank');
+        if (w) {
+            fetch(game.path)
+                .then(response => response.text())
+                .then(html => {
+                    w.document.open();
+                    w.document.write(html);
+                    w.document.close();
+                })
+                .catch(err => {
+                    console.error("About:blank fetch failed:", err);
+                    w.location.href = game.path;
+                });
+        }
+    };
+
+    const btnAboutBlank = document.createElement('button');
+    btnAboutBlank.textContent = 'Open in about:blank';
+    btnAboutBlank.className = 'close-btn';
+    btnAboutBlank.onclick = openAboutBlank;
+
+    const btnDownload = document.createElement('button');
+    btnDownload.textContent = 'Download';
+    btnDownload.className = 'close-btn';
+    btnDownload.onclick = () => {
+        fetch(game.path)
+            .then(response => response.text())
+            .then(html => {
+                const blob = new Blob([html], { type: 'text/html' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `${game.title.replace(/[^a-z0-9]/gi, '_')}.html`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            })
+            .catch(err => console.error("Download failed:", err));
+    };
+
+    const btnFav = document.createElement('button');
+    btnFav.textContent = favoritesSet.has(game.title) ? 'Unfavorite' : 'Favorite'; 
+    btnFav.className = 'close-btn';
+    btnFav.onclick = () => {
+        if (favoritesSet.has(game.title)) {
+            favoritesSet.delete(game.title);
+            btnFav.textContent = 'Favorite'; 
+        } else {
+            favoritesSet.add(game.title);
+            btnFav.textContent = 'Unfavorite'; 
+        }
+        saveFavorites();
+        updateFavoriteTile(game);
+    };
+
+    const btnHide = document.createElement('button');
+    btnHide.textContent = 'Hide bar';
+    btnHide.className = 'close-btn';
+
+    const btnClose = document.createElement('button');
+    btnClose.textContent = '✕ Close';
+    btnClose.className = 'close-btn';
+    btnClose.onclick = () => {
+        playSound('click'); 
+        const r = document.getElementById('restoreBarBtn');
+        if (r) r.remove();
+        const pageTop = document.querySelector('.top-bar');
+        if (pageTop) pageTop.classList.remove('hidden');
+        document.body.removeChild(modal);
+        try { updateSelection(4); } catch(e) { console.warn('updateSelection on close failed', e); }
+        if (!isLibraryOpen && !isOtherOpen) {
+            playAmbience();
+        }
+    };
+    
+    controls.appendChild(btnAboutBlank);
+    controls.appendChild(btnDownload);
+    controls.appendChild(btnFav);
+    controls.appendChild(btnHide);
+    controls.appendChild(btnClose);
+
+    bar.appendChild(leftSpan);
+    bar.appendChild(controls);
+
+    const frameWrapper = document.createElement('div');
+    frameWrapper.style.position = 'relative';
+    frameWrapper.style.flex = '1';
+    frameWrapper.style.display = 'flex';
+    frameWrapper.style.flexDirection = 'column';
+
+    btnHide.onclick = () => {
+        try {
+            bar.classList.add('hidden');
+            bar.setAttribute('aria-hidden', 'true');
+            bar.style.setProperty('display', 'none', 'important');
+            bar.style.setProperty('opacity', '0', 'important');
+            bar.style.setProperty('height', '0px', 'important');
+            bar.style.setProperty('pointer-events', 'none', 'important');
+
+            const pageTop = document.querySelector('.top-bar');
+            if (pageTop) {
+                pageTop.classList.add('hidden');
+                pageTop.setAttribute('aria-hidden', 'true');
+            }
+            playSound('click');
+
+            let restore = document.getElementById('restoreBarBtn');
+            if (!restore) {
+                restore = document.createElement('button');
+                restore.id = 'restoreBarBtn';
+                restore.className = 'restore-bar-btn';
+                restore.innerHTML = '▾';
+                restore.onclick = () => {
+                    bar.classList.remove('hidden');
+                    bar.removeAttribute('aria-hidden');
+                    
+                    bar.style.removeProperty('display');
+                    bar.style.removeProperty('opacity');
+                    bar.style.removeProperty('height');
+                    bar.style.removeProperty('padding');
+                    bar.style.removeProperty('pointer-events');
+                    bar.style.removeProperty('visibility');
+
+                    bar.style.setProperty('display', 'flex', 'important');
+                    bar.style.setProperty('opacity', '1', 'important');
+                    bar.style.setProperty('height', '40px', 'important');
+                    bar.style.setProperty('pointer-events', 'auto', 'important');
+
+                    const pt = document.querySelector('.top-bar');
+                    if (pt) {
+                        pt.classList.remove('hidden');
+                        pt.removeAttribute('aria-hidden');
+                        pt.style.display = '';
+                    }
+                    try { restore.remove(); } catch(e) {}
+                    playSound('select');
+                };
+                document.body.appendChild(restore);
+                setTimeout(() => restore.classList.add('visible'), 10);
+            }
+        } catch (err) {
+            console.warn('Error in hide bar handler:', err);
+        }
+    };
+  
+    if (game.iframe) {
+        const frame = document.createElement('iframe');
+        frame.style.width = '100%';
+        frame.style.height = '100%';
+        frame.style.flex = '1';
+        frame.style.border = 'none';
+        
+        fetch(game.path)
+            .then(response => response.text())
+            .then(html => {
+                frame.srcdoc = html;
+            })
+            .catch(err => {
+                console.error("Iframe fetch failed:", err);
+                frame.src = game.path; 
+            });
+
+        frameWrapper.appendChild(frame);
+    } else {
+        frameWrapper.style.display = 'flex';
+        frameWrapper.style.flexDirection = 'column';
+        frameWrapper.style.justifyContent = 'center';
+        frameWrapper.style.alignItems = 'center';
+        frameWrapper.style.textAlign = 'center';
+        frameWrapper.style.background = '#000';
+        const messageDiv = document.createElement('div');
+        messageDiv.style.padding = '50px';
+        messageDiv.style.maxWidth = '80%';
+        const messageP = document.createElement('p');
+        messageP.textContent = "Due to issues, this game is not supported here.";
+        messageP.style.fontSize = '1.8rem';
+        messageP.style.color = 'white';
+        const bigAboutBlankBtn = btnAboutBlank.cloneNode(true);
+        bigAboutBlankBtn.textContent = 'Open in About:blank';
+        bigAboutBlankBtn.style.marginTop = '20px';
+        bigAboutBlankBtn.onclick = openAboutBlank; 
+        messageDiv.appendChild(messageP);
+        messageDiv.appendChild(bigAboutBlankBtn);
+        frameWrapper.appendChild(messageDiv);
+    }
+
+    modal.appendChild(bar);
+    modal.appendChild(frameWrapper);
+    document.body.appendChild(modal);
+
+    setTimeout(() => {
+        try {
+            const iframeEl = frameWrapper.querySelector('iframe');
+            if (iframeEl) { iframeEl.focus(); }
+        } catch(e) {}
+    }, 50);
+    
+    promoteToRecent(game); 
+}
+        function updateFavoriteTile(game) {
+            const tile = document.getElementById('favoriteTile');
+            const label = document.getElementById('favoriteLabel');
+            const status = document.getElementById('favoriteStatus');
+
+            tile.style.transition = 'background 0.25s ease, border 0.15s ease';
+
+            if (!game || game.systemType) {
+                tile.style.background = 'linear-gradient(135deg, rgba(0,0,0,0.6), rgba(0,0,0,0.4))';
+                tile.style.border = 'none';
+                label.textContent = "Favorite this game";
+                status.textContent = "Unavailable for system tiles";
+                tile.onclick = null;
+                return;
+            }
+
+            const accent = (getComputedStyle(document.body).getPropertyValue('--ps-light-blue') || '#00a0e9').trim();
+            const isFav = favoritesSet.has(game.title);
+
+            if (isFav) {
+                tile.style.background = `linear-gradient(135deg, ${accent}, rgba(0,0,0,0.35))`;
+                tile.style.border = `2px solid ${accent}`;
+                label.textContent = "Favorited";
+                status.textContent = "Click to remove from favorites";
+            } else {
+                tile.style.background = `linear-gradient(135deg, rgba(0,0,0,0.6), ${accent})`;
+                tile.style.border = '1px solid rgba(255,255,255,0.06)';
+                label.textContent = "Favorite this game";
+                status.textContent = "Click to add to favorites";
+            }
+
+            tile.onclick = () => {
+                playSound('select'); 
+                if (favoritesSet.has(game.title)) {
+                    favoritesSet.delete(game.title);
+                } else {
+                    favoritesSet.add(game.title);
+                }
+                saveFavorites();
+                updateFavoriteTile(game);
+            };
+        }
+
+        
+        setInterval(() => {
+            const now = new Date();
+            const h = String(now.getHours()).padStart(2, '0');
+            const m = String(now.getMinutes()).padStart(2, '0');
+            document.getElementById('clock').innerText = `${h}:${m}`;
+        }, 1000);
+
+        
+        window.addEventListener('keydown', (e) => {
+            const modalOpen = !!document.querySelector('.game-modal');
+
+            if (isLibraryOpen || isOtherOpen || modalOpen) {
+                if(e.key === 'Escape') {
+                    if (isLibraryOpen) {
+                        libSearchInput.value = '';
+                        currentCategoryFilter = 'All';
+                        renderCategoryButtons();
+                        renderOverlayGrid();
+                        closeOverlay();
+                    } else if (isOtherOpen) {
+                        toggleOther(false);
+                    } else if (modalOpen) {
+                        // Close the modal via its close button if present, otherwise remove it
+                        const modalEl = document.querySelector('.game-modal');
+                        if (modalEl) {
+                            const closeBtn = modalEl.querySelector('.close-btn');
+                            if (closeBtn) {
+                                closeBtn.click();
+                            } else {
+                                modalEl.remove();
+                            }
+                        }
+
+                        // Make sure we return the selection to the first game after closing
+                        try { updateSelection(4); } catch (e) { console.warn('updateSelection on Escape close failed', e); }
+                    }
+                }
+                return;
+            }
+            
+            const oldIndex = selectedIndex;
+
+            if(e.key === 'ArrowRight') updateSelection(selectedIndex + 1);
+            if(e.key === 'ArrowLeft') updateSelection(selectedIndex - 1);
+            
+            if ((e.key === 'ArrowRight' || e.key === 'ArrowLeft') && selectedIndex !== oldIndex) {
+                playSound('hover');
+            }
+
+            if(e.key === 'Enter') activateItem(selectedIndex);
+        });
+
+        
+        
+        function setFavicon(url) {
+            let link = document.querySelector("link[rel~='icon']");
+            if (!link) {
+                link = document.createElement('link');
+                link.rel = 'icon';
+                document.head.appendChild(link);
+            }
+            link.href = url;
+        }
+
+        function applyCloakPreset(title, icon) {
+            document.title = title;
+            setFavicon(icon);
+            localStorage.setItem('alexrGames_cloak_title', title);
+            localStorage.setItem('alexrGames_cloak_icon', icon);
+        }
+
+        function applyCustomCloak() {
+            const title = document.getElementById('cloakTitleInput').value.trim();
+            const icon = document.getElementById('cloakIconInput').value.trim();
+            if (title) {
+                document.title = title;
+                localStorage.setItem('alexrGames_cloak_title', title);
+            }
+            if (icon) {
+                setFavicon(icon);
+                localStorage.setItem('alexrGames_cloak_icon', icon);
+            }
+        }
+
+       
+        function resetCloak() {
+            
+            document.title = "Alexr's World";
+            const icon = document.querySelector("link[rel~='icon']");
+            if (icon) icon.remove();
+            localStorage.removeItem('alexrGames_cloak_title');
+            localStorage.removeItem('alexrGames_cloak_icon');
+
+            
+            localStorage.removeItem('alexrGames_theme');
+            localStorage.removeItem('alexrGames_custom_background'); 
+            
+            
+            if (typeof setTheme === 'function') {
+                setTheme('default'); 
+            } else {
+                
+                document.body.className = document.body.className.split(' ').filter(c => !c.startsWith('theme-')).join(' ');
+                document.body.classList.add('theme-default'); 
+            }
+
+            
+            localStorage.removeItem('alexrGames_ps5_bg_enabled');
+            document.body.classList.remove('ps5-background-enabled'); 
+            
+            const ps5ToggleButton = document.getElementById('ps5BgToggle');
+            if (ps5ToggleButton) {
+                ps5ToggleButton.textContent = 'PS5 Background: OFF';
+            }
+
+            
+            localStorage.removeItem('alexrGames_sound_enabled');
+            localStorage.removeItem('alexrGames_ambience_volume');
+            
+            if (typeof toggleSound === 'function') {
+                
+            }
+            if (typeof updateAmbienceVolume === 'function') {
+                updateAmbienceVolume(0.5); 
+            }
+            
+            
+            alert("All settings (Cloaking, Theme, Sound, PS5 BG) reset to default! The page will now reload.");
+            window.location.reload(); 
+        }
+        function loadCloak() {
+            const t = localStorage.getItem('alexrGames_cloak_title');
+            const i = localStorage.getItem('alexrGames_cloak_icon');
+            if (t) document.title = t;
+            if (i) setFavicon(i);
+        }
+
+        
+        loadCloak();
+
+        let lastWheelTime = 0;
+        const wheelCooldownMs = 120;
+        window.addEventListener('wheel', (e) => {
+            try {
+                if (isLibraryOpen || isOtherOpen) return;
+                if (document.querySelector('.game-modal')) return;
+
+                const now = Date.now();
+                if (now - lastWheelTime < wheelCooldownMs) return;
+
+                const delta = e.deltaY || e.wheelDelta || 0;
+                if (Math.abs(delta) < 5) return;
+
+                if (e.preventDefault) e.preventDefault();
+
+                if (delta > 0) {
+                    updateSelection(Math.min(displayList.length - 1, selectedIndex + 1));
+                } else {a
+                    updateSelection(Math.max(0, selectedIndex - 1));
+                }
+
+                playSound('hover');
+                lastWheelTime = now;
+            } catch (err) {
+                console.warn('Wheel navigation error:', err);
+            }
+        }, { passive: false });
+
+        (function(){
+            let touchStartX = 0;
+            let touchStartY = 0;
+            let touchStartTime = 0;
+            let touchMoved = false;
+            const swipeThreshold = 40; 
+            const swipeTime = 500;
+
+            carousel.addEventListener('touchstart', (e) => {
+                if (isLibraryOpen || isOtherOpen || document.querySelector('.game-modal')) return;
+                const t = e.touches[0];
+                touchStartX = t.clientX;
+                touchStartY = t.clientY;
+                touchStartTime = Date.now();
+                touchMoved = false;
+            }, { passive: true });
+
+            carousel.addEventListener('touchmove', (e) => {
+                if (!touchStartX) return;
+                const t = e.touches[0];
+                const dx = Math.abs(t.clientX - touchStartX);
+                const dy = Math.abs(t.clientY - touchStartY);
+                if (dx > 10 && dx > dy) {
+                    e.preventDefault && e.preventDefault();
+                    touchMoved = true;
+                }
+            }, { passive: false });
+
+            carousel.addEventListener('touchend', (e) => {
+                if (!touchStartTime) return;
+                const t = e.changedTouches[0];
+                const dx = t.clientX - touchStartX;
+                const dt = Date.now() - touchStartTime;
+                touchStartX = 0; touchStartY = 0; touchStartTime = 0;
+
+                if (Math.abs(dx) > swipeThreshold && dt < swipeTime && touchMoved) {
+                    if (dx < 0) {
+                        updateSelection(Math.min(displayList.length - 1, selectedIndex + 1));
+                    } else {
+                        updateSelection(Math.max(0, selectedIndex - 1));
+                    }
+                    playSound('hover');
+                }
+            }, { passive: true });
+        })();
+
+        loadTheme();
+        loadGames();
+        loadPS5BackgroundSetting();
+        loadSoundSettings();
+
+        (function(){
+            const bodyObserver = new MutationObserver((mutations) => {
+                for (const m of mutations) {
+                    for (const n of m.removedNodes) {
+                        if (n && n.nodeType === 1 && n.classList && n.classList.contains('game-modal')) {
+                            const r = document.getElementById('restoreBarBtn'); if (r) try { r.remove(); } catch(e) {}
+                            const pageTop = document.querySelector('.top-bar'); if (pageTop) pageTop.classList.remove('hidden');
+
+                            try { updateSelection(4); } catch(e) { console.warn('updateSelection after mutation failed', e); }
+                        }
+                    }
+                }
+            });
+            bodyObserver.observe(document.body, { childList: true });
+        })();
+    </script>
+
+<style>
+
+body.theme-red {
+    background-color: #3a0000 !important;
+    background-image:
+        radial-gradient(circle at 20% 0, rgba(255,80,80,0.25) 0%, transparent 55%),
+        radial-gradient(circle at 80% 100%, rgba(180,0,0,0.35) 0%, transparent 55%),
+        linear-gradient(135deg, #3a0000, #7a0000) !important;
+    --ps-light-blue: #ff4d4d !important;
+}
+
+.lib-card.dragging {
+    opacity: 0.4;
+    transform: scale(0.95);
+}
+.lib-card.drag-over {
+    outline: 3px solid var(--ps-light-blue);
+}
+
+</style>
+
+</body>
+</html>
