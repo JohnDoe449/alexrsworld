@@ -2580,7 +2580,7 @@
   "title": "Super Tennis",
   "img": "https://cdn.jsdelivr.net/gh/dskjfoisjfsjio/Standalone-games@main/assets/super%20tennis.jpg",
   "description": "The classic SNES sports title. Choose your player and win the tournament!",
-  "path": "Games/emulated/SNES/Supertennis.html",
+  "path": "Games/emulated/SNES/supertennis.html",
   "category": "Arcade",
   "iframe": true
 },
