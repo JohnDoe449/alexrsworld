@@ -1015,9 +1015,7 @@ let draggedLibTitle = null;
         const gameSuggestionsDatalist = document.getElementById('game-suggestions');
         const subContent = document.querySelector('.sub-content'); 
 
-        // Play select sound when interacting with the library/favorites search input
         if (libSearchInput) {
-            // Use focus and Enter; avoid click to prevent double-trigger (focus + click) on some browsers
             libSearchInput.addEventListener('focus', () => playSound('select'));
             libSearchInput.addEventListener('keydown', (e) => {
                 if (e.key === 'Enter') {
@@ -1095,7 +1093,6 @@ let draggedLibTitle = null;
             select: new Audio('sounds/select.mp3'),
         };
         
-        // Per-sound cooldowns (ms) to avoid duplicates while allowing frequent hover sounds
         const _soundCooldowns = { hover: 80, select: 220, click: 220 };
         const _lastSoundPlay = {};
 
