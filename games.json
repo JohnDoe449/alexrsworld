@@ -900,7 +900,7 @@
     "img": "https://cdn.jsdelivr.net/gh/dskjfoisjfsjio/Standalone-games@main/assets/escape%20road.avif",
     "description": "An adrenaline-pumping driving game. Evade the police for as long as possible!",
     "path": "Games/standalone/escaperoad.html",
-    "category": "Action",
+    "category": "Arcade",
     "iframe": true
   },
   {
