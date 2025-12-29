@@ -239,7 +239,7 @@
     "img": "https://cdn.jsdelivr.net/gh/dskjfoisjfsjio/Standalone-games@main/assets/Miami2019Icon.webp",
     "description": "Surf through the sun-soaked streets of Miami! Dodge palm trees and pink flamingos in this classic world tour stop.",
     "path": "https://cdn.jsdelivr.net/gh/dskjfoisjfsjio/alexrsworld@main/Games/standalone/subwaysurfersmiami.html",
-    "category": "Action",
+    "category": "Runner",
     "iframe": true
   },
   
@@ -248,7 +248,7 @@
     "img": "https://cdn.jsdelivr.net/gh/dskjfoisjfsjio/Standalone-games@main/assets/subway%20surfers%20havana.webp",
     "description": "Explore the colorful and historic streets of Havana! Keep the run going through this beautiful Caribbean city.",
     "path": "https://cdn.jsdelivr.net/gh/dskjfoisjfsjio/alexrsworld@main/Games/standalone/subwaysurfershavana.html",
-    "category": "Action",
+    "category": "Runner",
     "iframe": true
   },
 
@@ -1945,7 +1945,7 @@
     "img": "https://cdn.jsdelivr.net/gh/dskjfoisjfsjio/Standalone-games@main/assets/burrito%20bison.jpg",
     "description": "Launch yourself into the air and crush gummy bears to escape Candy Land!",
     "path": "https://cdn.jsdelivr.net/gh/dskjfoisjfsjio/Standalone-games@main/Games/ruffle/burritobisonoriginal.html",
-    "category": "Action",
+    "category": "Arcade",
     "iframe": true
   },
 
