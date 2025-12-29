@@ -180,7 +180,7 @@
     "img": "https://cdn.jsdelivr.net/gh/dskjfoisjfsjio/Standalone-games@main/assets/angrybirdsspace.webp",
     "description": "The classic bird-slinging action, now with zero-gravity mechanics in outer space!",
     "path": "Games/ruffle/angrybirdsspace.html",
-    "category": "Action",
+    "category": "Arcade",
     "iframe": true
   },
   {
@@ -292,7 +292,7 @@
     "img": "https://raw.githubusercontent.com/dskjfoisjfsjio/Standalone-games/main/assets/bendy%20and%20the%20ink%20machine.jpg",
     "description": "The classic Bendy is a first person horror game where you uncover the dark secrets about the abandoned factory.",
     "path": "Games/standalone/bendy.html",
-    "category": "Challenging",
+    "category": "Horror",
     "iframe": true
   },
   {
