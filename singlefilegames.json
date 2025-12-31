@@ -2891,6 +2891,83 @@
     "iframe": true
   },
 
+  
+  {
+    "title": "Moto X3M",
+    "img": "https://cdn.jsdelivr.net/gh/dskjfoisjfsjio/Standalone-games@main/assets/moto%20x3m.jpg",
+    "description": "The ultimate bike racing game!",
+    "path": "https://cdn.jsdelivr.net/gh/dskjfoisjfsjio/alexrsworld@main/Games/standalone/motox3m.html",
+    "category": "Arcade",
+    "iframe": true
+  },
+  {
+    "title": "Moto X3M 2",
+    "img": "https://cdn.jsdelivr.net/gh/dskjfoisjfsjio/Standalone-games@main/assets/moto%20x3m%202.jpg",
+    "description": "Extreme motorcycle challenges.",
+    "path": "https://cdn.jsdelivr.net/gh/dskjfoisjfsjio/alexrsworld@main/Games/standalone/motox3m2.html",
+    "category": "Arcade",
+    "iframe": true
+  },
+  {
+    "title": "Moto X3M 3",
+    "img": "https://cdn.jsdelivr.net/gh/dskjfoisjfsjio/Standalone-games@main/assets/moto%20x3m%203.jpg",
+    "description": "The third installment of the legendary bike trial game.",
+    "path": "https://cdn.jsdelivr.net/gh/dskjfoisjfsjio/alexrsworld@main/Games/standalone/motox3m3.html",
+    "category": "Arcade",
+    "iframe": true
+  },
+  {
+    "title": "Moto X3M Winter",
+    "img": "https://cdn.jsdelivr.net/gh/dskjfoisjfsjio/Standalone-games@main/assets/moto%20x3m%20winter.jpg",
+    "description": "Snowy extreme bike adventure.",
+    "path": "https://cdn.jsdelivr.net/gh/dskjfoisjfsjio/alexrsworld@main/Games/standalone/motox3mwinter.html",
+    "category": "Arcade",
+    "iframe": true
+  },
+  {
+    "title": "FNAF World",
+    "img": "https://cdn.jsdelivr.net/gh/dskjfoisjfsjio/Standalone-games@main/assets/fnaf%20world.webp",
+    "description": "A colorful RPG spin-off.",
+    "path": "https://cdn.jsdelivr.net/gh/dskjfoisjfsjio/alexrsworld@main/Games/standalone/fnafworld.html",
+    "category": "Adventure",
+    "iframe": true
+  },
+  {
+    "title": "Neon Blaster",
+    "img": "https://cdn.jsdelivr.net/gh/dskjfoisjfsjio/Standalone-games@main/assets/neon%20blaster.jpg",
+    "description": "Arcade shooter action.",
+    "path": "https://cdn.jsdelivr.net/gh/dskjfoisjfsjio/alexrsworld@main/Games/standalone/neonblaster.html",
+    "category": "Arcade",
+    "iframe": true
+  },
+  {
+    "title": "Only Up",
+    "img": "https://cdn.jsdelivr.net/gh/dskjfoisjfsjio/Standalone-games@main/assets/only%20up.jpg",
+    "description": "Test your parkour skills.",
+    "path": "https://cdn.jsdelivr.net/gh/dskjfoisjfsjio/alexrsworld@main/Games/standalone/onlyup.html",
+    "category": "Challenging",
+    "iframe": true
+  },
+
+  {
+    "title": "Earn to Die 2",
+    "img": "https://cdn.jsdelivr.net/gh/dskjfoisjfsjio/Standalone-games@main/assets/earn%20to%20die%202.webp",
+    "description": "Smash through zombies.",
+    "path": "https://cdn.jsdelivr.net/gh/dskjfoisjfsjio/alexrsworld@main/Games/ruffle/earntodie2.html",
+    "category": "Arcade",
+    "iframe": true
+  },
+  
+  {
+    "title": "Sonic Rush",
+    "img": "https://cdn.jsdelivr.net/gh/dskjfoisjfsjio/Standalone-games@main/assets/sonic%20rush.png",
+    "description": "High-speed NDS action.",
+    "path": "https://cdn.jsdelivr.net/gh/dskjfoisjfsjio/alexrsworld@main/Games/emulated/NDS/sonicrush.html",
+    "category": "Adventure",
+    "iframe": true
+  },
+
+
   {
     "title": "Soundboard",
     "img": "https://raw.githubusercontent.com/dskjfoisjfsjio/dskjfoisjfsjio.github.io/main/assets/game%20images/soundboard.png",
