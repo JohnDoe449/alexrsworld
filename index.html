@@ -1058,7 +1058,7 @@ let draggedLibTitle = null;
             description: "Suggest a game via Google Form.",
             systemType: "suggest",
             icon: "fa-lightbulb",
-            path: "https://docs.google.com/forms/d/e/1FAIpQLSeOUOd7fAVrAdD4u3IWdyAVCnkcvGkgkVIf-pd0bhOBGcrC1g/viewform?usp=sf_link" // Placeholder URL
+            path: "https://docs.google.com/forms/d/e/1FAIpQLSeOUOd7fAVrAdD4u3IWdyAVCnkcvGkgkVIf-pd0bhOBGcrC1g/viewform?usp=sf_link" 
         };
         
         const reportItem = {
@@ -1067,7 +1067,7 @@ let draggedLibTitle = null;
             description: "Report a bug via Google Form.",
             systemType: "report",
             icon: "fa-bug",
-            path: "https://docs.google.com/forms/d/e/1FAIpQLSerfTd9MM5NwszaG1CNMSZjNoNtF4VF51_twn18E-XW6MDLew/viewform?usp=sf_link" // Placeholder URL
+            path: "https://docs.google.com/forms/d/e/1FAIpQLSerfTd9MM5NwszaG1CNMSZjNoNtF4VF51_twn18E-XW6MDLew/viewform?usp=sf_link" 
         };
 
         const libraryItem = {
@@ -1973,7 +1973,7 @@ const response = await fetch('https://raw.githubusercontent.com/dskjfoisjfsjio/a
                 restore.id = 'restoreBarBtn';
                 restore.className = 'restore-bar-btn';
                 restore.setAttribute('aria-label', 'Show controls');
-                restore.innerHTML = '▾'; // The dropdown arrow
+                restore.innerHTML = '▾';
                 restore.onclick = () => {
 
                     bar.classList.remove('hidden');
@@ -2141,7 +2141,6 @@ const response = await fetch('https://raw.githubusercontent.com/dskjfoisjfsjio/a
                     } else if (isOtherOpen) {
                         toggleOther(false);
                     } else if (modalOpen) {
-                        // Close the modal via its close button if present, otherwise remove it
                         const modalEl = document.querySelector('.game-modal');
                         if (modalEl) {
                             const closeBtn = modalEl.querySelector('.close-btn');
