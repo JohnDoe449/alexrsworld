@@ -2338,10 +2338,147 @@ body.theme-red {
 
 </style>
 
+    
+<script>
+    (function() {
+        const themesTab = document.getElementById('other_themes');
+        if (themesTab && !document.getElementById('alexr-custom-ui')) {
+            const customThemeHtml = `
+                <div id="alexr-custom-ui">
+                    <hr style="margin:20px 0; border-color:rgba(255,255,255,0.1);">
+                    <p><b>Custom Gradient Theme:</b></p>
+                    <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 15px; flex-wrap: wrap;">
+                        <div>
+                            <label style="display:block; font-size:0.7rem; margin-bottom:4px;">Color 1</label>
+                            <input type="color" id="customColor1" value="#003791" style="width:45px; height:30px; border:none; cursor:pointer; background:none;">
+                        </div>
+                        <div>
+                            <label style="display:block; font-size:0.7rem; margin-bottom:4px;">Color 2</label>
+                            <input type="color" id="customColor2" value="#005c9e" style="width:45px; height:30px; border:none; cursor:pointer; background:none;">
+                        </div>
+                        <button class="close-btn" onclick="applyCustomGradient()" style="margin-top:15px; padding: 6px 12px;">Apply</button>
+                        <button class="close-btn" onclick="resetEverything()" style="margin-top:15px; padding: 6px 12px; border-color:#ff4d4d; color:#ff4d4d;">Reset All</button>
+                    </div>
+                </div>
+            `;
+            themesTab.insertAdjacentHTML('beforeend', customThemeHtml);
+        }
+
+        const customStyleTag = document.getElementById('custom-theme-overrides') || (function() {
+            const tag = document.createElement('style');
+            tag.id = 'custom-theme-overrides';
+            document.head.appendChild(tag);
+            return tag;
+        })();
+
+        function clearAllThemeClasses() {
+            const themes = ['theme-default', 'theme-dark', 'theme-red', 'theme-blue-dark', 'theme-hacker', 'theme-tokyo', 'theme-custom'];
+            document.body.classList.remove(...themes);
+        }
+
+        const originalSetTheme = window.setTheme;
+        window.setTheme = function(themeName) {
+            localStorage.setItem('alexrGames_theme', themeName);
+            
+            if (themeName !== 'custom') {
+                localStorage.removeItem('alexr_custom_active');
+                customStyleTag.innerHTML = ''; 
+            }
+            
+            clearAllThemeClasses();
+            document.body.classList.add('theme-' + themeName);
+
+            if (localStorage.getItem('customBackground')) {
+                document.body.classList.add('has-custom-bg');
+            }
+
+            if (typeof originalSetTheme === 'function' && themeName !== 'custom') {
+                originalSetTheme(themeName);
+            }
+        };
+
+        window.loadTheme = function() {
+            const savedTheme = localStorage.getItem('alexrGames_theme') || 'default';
+            const isCustomActive = localStorage.getItem('alexr_custom_active');
+            
+            if (isCustomActive === 'true' && savedTheme === 'custom') {
+                const gradientData = localStorage.getItem('alexr_custom_theme');
+                if (gradientData) {
+                    const {color1, color2} = JSON.parse(gradientData);
+                    document.getElementById('customColor1').value = color1;
+                    document.getElementById('customColor2').value = color2;
+                    updateGradientCSS(color1, color2);
+                }
+            }
+            
+            clearAllThemeClasses();
+            document.body.classList.add('theme-' + savedTheme);
+            if (localStorage.getItem('customBackground')) {
+                document.body.classList.add('has-custom-bg');
+            }
+        };
+
+        window.applyCustomGradient = function() {
+            const c1 = document.getElementById('customColor1').value;
+            const c2 = document.getElementById('customColor2').value;
+
+            localStorage.setItem('alexr_custom_theme', JSON.stringify({color1: c1, color2: c2}));
+            localStorage.setItem('alexr_custom_active', 'true');
+            
+            window.setTheme('custom');
+            updateGradientCSS(c1, c2);
+            if (typeof playSound === 'function') playSound('select');
+        };
+
+        function updateGradientCSS(c1, c2) {
+            customStyleTag.innerHTML = `
+                body.theme-custom:not(.has-custom-bg) {
+                    background-color: ${c1} !important;
+                    background-image: 
+                        radial-gradient(circle at 50% 0%, rgba(255,255,255,0.1) 0%, transparent 60%),
+                        linear-gradient(110deg, ${c1} 0%, ${c2} 50%, ${c1} 100%) !important;
+                }
+                body.theme-custom { --ps-light-blue: ${c2} !important; }
+                body.theme-custom .card.system-card {
+                    background: linear-gradient(135deg, ${c1}, ${c2}) !important;
+                    border: 1px solid rgba(255,255,255,0.3) !important;
+                }
+                body.theme-custom .card.active { box-shadow: 0 0 0 4px ${c2}, 0 10px 20px rgba(0,0,0,0.5) !important; }
+                body.theme-custom .category-btn.active { background: ${c2} !important; border-color: ${c2} !important; }
+                body.theme-custom .game-modal > div:first-child { 
+                    background: ${c1} !important; 
+                    border-bottom: 1px solid ${c2} !important; 
+                }
+                body.theme-custom .game-modal button { border-color: ${c2} !important; }
+                body.theme-custom .game-modal button:hover { background: ${c2} !important; }
+            `;
+        }
+
+        window.resetEverything = function() {
+            localStorage.removeItem('alexr_custom_active');
+            localStorage.removeItem('alexr_custom_theme');
+            localStorage.removeItem('customBackground');
+            
+            customStyleTag.innerHTML = '';
+            document.body.style.backgroundImage = '';
+            document.body.classList.remove('has-custom-bg');
+            
+            window.setTheme('default');
+            
+            if (typeof toggleOther === 'function') toggleOther(false);
+            if (typeof playSound === 'function') playSound('click');
+        };
+
+        window.loadTheme();
+    })();
+</script>
+
+
 
     
 </body>
 </html>
+
 
 
 
