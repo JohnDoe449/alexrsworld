@@ -3061,8 +3061,6 @@
     "category": "Arcade",
     "iframe": true
   },
-
-  [
   {
     "title": "A Koopa's Revenge",
     "img": "https://cdn.jsdelivr.net/gh/dskjfoisjfsjio/Standalone-games@main/assets/akoopasrevenge.jpg",
@@ -3151,5 +3149,5 @@
     "category": "Racing",
     "iframe": true
   }
-]
+
 ]
