@@ -2379,5 +2379,160 @@ body.theme-red {
 
 </style>
 
+  
+<script>
+  
+    (function() {
+     
+        const themesTab = document.getElementById('other_themes');
+        if (themesTab) {
+            
+            const existing = document.getElementById('alexr-custom-ui');
+            if (existing) existing.remove();
+
+            const customThemeHtml = `
+                <div id="alexr-custom-ui">
+                    <hr style="margin:20px 0; border-color:rgba(255,255,255,0.1);">
+                    <p><b>Custom Gradient Theme:</b></p>
+                    <div style="display: flex; gap: 15px; align-items: center; margin-bottom: 15px; flex-wrap: wrap;">
+                        <div>
+                            <label style="display:block; font-size:0.8rem; margin-bottom:5px;">Color 1</label>
+                            <input type="color" id="customColor1" value="#003791" style="width:50px; height:30px; border:none; cursor:pointer; background:none;">
+                        </div>
+                        <div>
+                            <label style="display:block; font-size:0.8rem; margin-bottom:5px;">Color 2</label>
+                            <input type="color" id="customColor2" value="#005c9e" style="width:50px; height:30px; border:none; cursor:pointer; background:none;">
+                        </div>
+                        <button class="close-btn" onclick="applyCustomGradient()" style="margin-top:18px;">Apply Gradient</button>
+                        <button class="close-btn" onclick="resetEverything()" style="margin-top:18px; border-color:#ff4d4d; color:#ff4d4d;">Reset All</button>
+                    </div>
+                </div>
+            `;
+            themesTab.insertAdjacentHTML('beforeend', customThemeHtml);
+        }
+
+        let customStyleTag = document.getElementById('custom-theme-overrides');
+        if (!customStyleTag) {
+            customStyleTag = document.createElement('style');
+            customStyleTag.id = 'custom-theme-overrides';
+            document.head.appendChild(customStyleTag);
+        }
+
+      
+
+        function clearThemeClasses() {
+            const themes = ['theme-default', 'theme-dark', 'theme-red', 'theme-blue-dark', 'theme-hacker', 'theme-tokyo', 'theme-custom'];
+            document.body.classList.remove(...themes);
+        }
+
+        const originalSetTheme = window.setTheme;
+        window.setTheme = function(themeName) {
+            localStorage.removeItem('alexr_custom_active'); g
+            customStyleTag.innerHTML = ''; 
+            
+            clearThemeClasses();
+            document.body.classList.add('theme-' + themeName);
+            localStorage.setItem('alexrGames_theme', themeName);
+
+            if (localStorage.getItem('customBackground')) {
+                document.body.classList.add('has-custom-bg');
+            }
+
+            if (typeof playSound === 'function') playSound('select');
+        };
+
+        window.applyCustomGradient = function() {
+            const c1 = document.getElementById('customColor1').value;
+            const c2 = document.getElementById('customColor2').value;
+
+            localStorage.setItem('alexr_custom_theme', JSON.stringify({color1: c1, color2: c2}));
+            localStorage.setItem('alexr_custom_active', 'true');
+            
+            clearThemeClasses();
+            document.body.classList.add('theme-custom');
+            
+            
+            if (localStorage.getItem('customBackground')) {
+                document.body.classList.add('has-custom-bg');
+            }
+
+            updateGradientCSS(c1, c2);
+            if (typeof playSound === 'function') playSound('select');
+        };
+
+        function updateGradientCSS(c1, c2) {
+            customStyleTag.innerHTML = `
+                /* Gradient only shows if NOT using a custom image */
+                body.theme-custom:not(.has-custom-bg) {
+                    background-color: ${c1} !important;
+                    background-image: 
+                        radial-gradient(circle at 50% 0%, rgba(255,255,255,0.1) 0%, transparent 60%),
+                        linear-gradient(110deg, ${c1} 0%, ${c2} 50%, ${c1} 100%) !important;
+                }
+                
+                /* System-wide color variables */
+                body.theme-custom {
+                    --ps-light-blue: ${c2} !important;
+                }
+
+                body.theme-custom .card.system-card {
+                    background: linear-gradient(135deg, ${c1}, ${c2}) !important;
+                    border: 1px solid rgba(255,255,255,0.3) !important;
+                }
+
+                body.theme-custom .card.active {
+                    box-shadow: 0 0 0 4px ${c2}, 0 10px 20px rgba(0,0,0,0.5) !important;
+                }
+
+                body.theme-custom .category-btn.active {
+                    background: ${c2} !important;
+                    border-color: ${c2} !important;
+                }
+
+                body.theme-custom .game-modal > div:first-child {
+                    background: ${c1} !important;
+                    border-bottom: 1px solid ${c2} !important;
+                }
+
+                body.theme-custom .game-modal button {
+                    border-color: ${c2} !important;
+                }
+            `;
+        }
+
+        window.resetEverything = function() {
+            localStorage.removeItem('alexr_custom_active');
+            localStorage.removeItem('alexr_custom_theme');
+            if (typeof clearCustomBackground === 'function') {
+                clearCustomBackground();
+            } else {
+                localStorage.removeItem('customBackground');
+                document.body.style.backgroundImage = '';
+                document.body.classList.remove('has-custom-bg');
+            }
+            
+            window.setTheme('default');
+        };
+
+        function initTheme() {
+            const isCustomActive = localStorage.getItem('alexr_custom_active');
+            const savedGradient = localStorage.getItem('alexr_custom_theme');
+            
+            if (isCustomActive === 'true' && savedGradient) {
+                const {color1, color2} = JSON.parse(savedGradient);
+                document.getElementById('customColor1').value = color1;
+                document.getElementById('customColor2').value = color2;
+                
+                clearThemeClasses();
+                document.body.classList.add('theme-custom');
+                updateGradientCSS(color1, color2);
+            }
+        }
+        
+        setTimeout(initTheme, 200);
+
+    })();
+</script>
+
 </body>
 </html>
