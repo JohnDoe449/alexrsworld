@@ -3009,6 +3009,15 @@
     "category": "Arcade",
     "iframe": true
   },
+
+    {
+    "title": "Super Tennis",
+    "img": "https://raw.githubusercontent.com/dskjfoisjfsjio/Standalone-games/main/assets/super%20tennis.jpg",
+    "description": "Play the classic SNES Super Tennis Game Now!",
+    "path": "https://cdn.jsdelivr.net/gh/dskjfoisjfsjio/alexrsworld@main/Games/emulated/SNES/supertennis.html",
+    "category": "Sports",
+    "iframe": true
+  },
   {
     "title": "Zombocalypse",
     "img": "https://raw.githubusercontent.com/dskjfoisjfsjio/dskjfoisjfsjio.github.io/main/assets/game%20images/zombocalypse.jpg",
