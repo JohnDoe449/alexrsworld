@@ -3203,6 +3203,111 @@
     "path": "Games/standalone/blockydemolitonderby.html",
     "category": "Arcade",
     "iframe": true
+  },
+
+  {
+    "title": "Baseball Bros",
+    "img": "https://raw.githubusercontent.com/dskjfoisjfsjio/Standalone-games/main/assets/baseball%20bros.avif",
+    "description": "Step up to the plate in this fast-paced, competitive baseball sim featuring smooth arcade mechanics and high-score challenges.",
+    "path": "Games/standalone/baseballbros.html",
+    "category": "Arcade",
+    "iframe": true
+  },
+  {
+    "title": "Doom",
+    "img": "https://raw.githubusercontent.com/dskjfoisjfsjio/Standalone-games/main/assets/doom.jpg",
+    "description": "Relive the legendary FPS that defined a genre. Fight through hordes of demons in a relentless battle for survival on Mars.",
+    "path": "Games/standalone/doom.html",
+    "category": "Action",
+    "iframe": true
+  },
+  {
+    "title": "Fallout",
+    "img": "https://raw.githubusercontent.com/dskjfoisjfsjio/Standalone-games/main/assets/fallout.jpg",
+    "description": "Navigate a desolate, post-nuclear wasteland where every choice matters. Master survival and tactical combat in a world gone mad.",
+    "path": "Games/standalone/fallout.html",
+    "category": "RPG",
+    "iframe": true
+  },
+  {
+    "title": "FNAF Pizzeria Simulator",
+    "img": "https://raw.githubusercontent.com/dskjfoisjfsjio/Standalone-games/main/assets/pizzasimulator.webp",
+    "description": "Balance business management with bone-chilling horror as you design your own pizzeria while surviving the animatronic night shift.",
+    "path": "Games/standalone/fnafpizzeriasimulator.html",
+    "category": "Horror",
+    "iframe": true
+  },
+  {
+    "title": "Football Bros",
+    "img": "https://raw.githubusercontent.com/dskjfoisjfsjio/Standalone-games/main/assets/football%20bros.jpg",
+    "description": "Experience big-head football action with easy-to-learn controls and explosive plays in this high-energy sports arcade game.",
+    "path": "Games/standalone/footballbros.html",
+    "category": "Arcade",
+    "iframe": true
+  },
+  {
+    "title": "Mario Party",
+    "img": "https://raw.githubusercontent.com/dskjfoisjfsjio/Standalone-games/main/assets/mario%20party.jpg",
+    "description": "The original N64 party starter. Compete in diverse minigames and race across interactive boards to become the Super Star.",
+    "path": "Games/emulated/N64/marioparty.html",
+    "category": "Arcade",
+    "iframe": true
+  },
+  {
+    "title": "Mario Party 2",
+    "img": "https://raw.githubusercontent.com/dskjfoisjfsjio/Standalone-games/main/assets/mario%20party%202.png",
+    "description": "The fan-favorite sequel featuring themed costumes, expanded items, and classic boards for the ultimate competitive board game experience.",
+    "path": "Games/emulated/N64/marioparty2.html",
+    "category": "Arcade",
+    "iframe": true
+  },
+  {
+    "title": "Scary Teacher 3D",
+    "img": "https://raw.githubusercontent.com/dskjfoisjfsjio/Standalone-games/main/assets/scaryteacher3d.jpg",
+    "description": "Execute clever pranks and solve puzzles to outsmart the creepy Miss T in this stealth-based 3D adventure.",
+    "path": "Games/standalone/scaryteacher3d.html",
+    "category": "Action",
+    "iframe": true
+  },
+  {
+    "title": "FNAF Sister Location",
+    "img": "https://raw.githubusercontent.com/dskjfoisjfsjio/Standalone-games/main/assets/sisterlocation.jpg",
+    "description": "Descend into the underground facility of Circus Baby's Pizza World for a narrative-driven horror experience unlike any other FNAF title.",
+    "path": "Games/standalone/sisterlocation.html",
+    "category": "Horror",
+    "iframe": true
+  },
+  {
+    "title": "Slope 3",
+    "img": "https://raw.githubusercontent.com/dskjfoisjfsjio/Standalone-games/main/assets/slope3.webp",
+    "description": "Test your reflexes in this high-speed physics game. Navigate a neon ball through a treacherous, ever-changing 3D obstacle course.",
+    "path": "Games/standalone/slope3.html",
+    "category": "Arcade",
+    "iframe": true
+  },
+  {
+    "title": "Super Mario Bros",
+    "img": "https://raw.githubusercontent.com/dskjfoisjfsjio/Standalone-games/main/assets/supermariobros.webp",
+    "description": "The quintessential platformer. Run, jump, and power up through the Mushroom Kingdom to rescue Princess Peach from Bowser.",
+    "path": "Games/emulated/NES/supermariobros.html",
+    "category": "Arcade",
+    "iframe": true
+  },
+  {
+    "title": "Super Mario Bros 2",
+    "img": "https://raw.githubusercontent.com/dskjfoisjfsjio/Standalone-games/main/assets/supermariobros2.png",
+    "description": "A unique departure for the series featuring four playable characters with distinct abilities and a world of sub-space secrets.",
+    "path": "Games/emulated/NES/supermariobros2.html",
+    "category": "Arcade",
+    "iframe": true
+  },
+  {
+    "title": "Super Mario Bros 3",
+    "img": "https://raw.githubusercontent.com/dskjfoisjfsjio/Standalone-games/main/assets/supermariobros3.jpg",
+    "description": "Widely regarded as one of the greatest games ever made. Explore massive worlds, fly with the Tanooki suit, and master new power-ups.",
+    "path": "Games/emulated/NES/supermariobros3.html",
+    "category": "Arcade",
+    "iframe": true
   }
 
 ]
