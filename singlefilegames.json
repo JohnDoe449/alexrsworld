@@ -3302,5 +3302,80 @@
     "path": "https://cdn.jsdelivr.net/gh/dskjfoisjfsjio/alexrsworld@main/Games/emulated/NES/supermariobros3.html",
     "category": "Arcade",
     "iframe": true
+  },
+
+  {
+    "title": "Basketball Legends",
+    "img": "https://raw.githubusercontent.com/dskjfoisjfsjio/Standalone-games/main/assets/basketballlegends.jpg",
+    "description": "Show off your skills on the court in this high-energy basketball game featuring legendary players and fast-paced arcade action.",
+    "path": "https://cdn.jsdelivr.net/gh/dskjfoisjfsjio/alexrsworld@main/Games/standalone/basketballlegends.html",
+    "category": "Sports",
+    "iframe": true
+  },
+  {
+    "title": "Bridge Race",
+    "img": "https://raw.githubusercontent.com/dskjfoisjfsjio/Standalone-games/main/assets/bridge%20race.png",
+    "description": "Collect blocks of your color and build bridges to outpace your opponents in this competitive racing challenge.",
+    "path": "https://cdn.jsdelivr.net/gh/dskjfoisjfsjio/alexrsworld@main/Games/standalone/bridgerace.html",
+    "category": "Arcade",
+    "iframe": true
+  },
+  {
+    "title": "Geometry Dash SubZero",
+    "img": "https://raw.githubusercontent.com/dskjfoisjfsjio/Standalone-games/main/assets/subzero.webp",
+    "description": "Experience the chillingly fast expansion of the rhythm-based platformer series with new levels and frosty obstacles.",
+    "path": "https://cdn.jsdelivr.net/gh/dskjfoisjfsjio/alexrsworld@main/Games/standalone/geometrydashsubzero.html",
+    "category": "Challenging",
+    "iframe": true
+  },
+  {
+    "title": "Geometry Dash World",
+    "img": "https://raw.githubusercontent.com/dskjfoisjfsjio/Standalone-games/main/assets/geometrydashworld.png",
+    "description": "Explore unique worlds and jump through rhythm-filled challenges in this fast-paced platforming adventure.",
+    "path": "https://cdn.jsdelivr.net/gh/dskjfoisjfsjio/alexrsworld@main/Games/standalone/geometrydashworld.html",
+    "category": "Challenging",
+    "iframe": true
+  },
+  {
+    "title": "Getting Over It",
+    "img": "https://raw.githubusercontent.com/dskjfoisjfsjio/Standalone-games/main/assets/gettingoverit.jpg",
+    "description": "A punishing climbing game where you navigate a mountain with nothing but a hammer and a pot.",
+    "path": "https://cdn.jsdelivr.net/gh/dskjfoisjfsjio/alexrsworld@main/Games/standalone/gettingoverit.html",
+    "category": "Challenging",
+    "iframe": true
+  },
+
+  {
+    "title": "Solar Smash",
+    "img": "https://raw.githubusercontent.com/dskjfoisjfsjio/Standalone-games/main/assets/solarsmash.webp",
+    "description": "Wreak havoc on a galactic scale using a variety of weapons to destroy planets in this cosmic destruction simulator.",
+    "path": "https://cdn.jsdelivr.net/gh/dskjfoisjfsjio/alexrsworld@main/Games/standalone/solarsmash.html",
+    "category": "Arcade",
+    "iframe": true
+  },
+  {
+    "title": "Sonic Battle",
+    "img": "https://raw.githubusercontent.com/dskjfoisjfsjio/Standalone-games/main/assets/sonicbattle.jpg",
+    "description": "Engage in fast-paced arena combat with Sonic and friends in this classic handheld fighting experience.",
+    "path": "https://cdn.jsdelivr.net/gh/dskjfoisjfsjio/alexrsworld@main/Games/emulated/GBA/sonicbattle.html",
+    "category": "Adventure",
+    "iframe": true
+  },
+  {
+    "title": "Tall Man Run",
+    "img": "https://raw.githubusercontent.com/dskjfoisjfsjio/Standalone-games/main/assets/tallmanrun.avif",
+    "description": "Grow taller and wider as you navigate obstacles to reach the finish line in this addictive runner.",
+    "path": "https://cdn.jsdelivr.net/gh/dskjfoisjfsjio/alexrsworld@main/Games/standalone/tallmanrun.html",
+    "category": "Arcade",
+    "iframe": true
+  },
+  
+  {
+    "title": "Tetris",
+    "img": "https://raw.githubusercontent.com/dskjfoisjfsjio/Standalone-games/main/assets/tetris.jpg",
+    "description": "The timeless puzzle classic. Clear lines and manage the falling blocks to achieve the ultimate high score.",
+    "path": "https://cdn.jsdelivr.net/gh/dskjfoisjfsjio/alexrsworld@main/Games/emulated/GBA/tetris.html",
+    "category": "Arcade",
+    "iframe": true
   }
 ]
