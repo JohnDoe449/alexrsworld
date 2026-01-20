@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -957,7 +958,7 @@ body.theme-red .game-modal > div:first-child { background: #3a0000 !important; c
             <div style="margin-top:15px;">
                 <button class="close-btn" onclick="applyCloakPreset('Google Docs','https://ssl.gstatic.com/docs/documents/images/kix-favicon7.ico')">Google Docs</button>
                 <button class="close-btn" onclick="applyCloakPreset('Google Classroom','https://www.gstatic.com/classroom/logo_square_rounded.svg')">Google Classroom</button>
-                <button class="close-btn" onclick="applyCloakPreset('Clever | Portal','https://raw.githubusercontent.com/dskjfoisjfsjio/Standalone-games/main/assets/clever.jpg')">Clever</button>
+                <button class="close-btn" onclick="applyCloakPreset('Clever | Portal','https://cdn.jsdelivr.net/gh/dskjfoisjfsjio/Standalone-games@main/assets/clever.jpg')">Clever</button>
             </div>
 
             <hr style="margin:20px 0; border-color:rgba(255,255,255,0.1);">
@@ -1270,7 +1271,8 @@ let draggedLibTitle = null;
     localStorage.removeItem('alexrGames_allGamesData');
     
     try {
-const response = await fetch('https://raw.githubusercontent.com/dskjfoisjfsjio/alexrsworld/main/games.json?t=' + Date.now());
+const response = await fetch('https://cdn.jsdelivr.net/gh/JohnDoe449/alexrsworld@main/singlefilegames.json
+?t=' + Date.now());
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
